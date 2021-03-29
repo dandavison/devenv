@@ -1,0 +1,102 @@
+{
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.formatOnPaste": false,
+    "editor.formatOnSaveMode": "file"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
+  },
+  "diffEditor.renderSideBySide": true,
+  "editor.cursorBlinking": "solid",
+  "editor.formatOnSave": true,
+  "editor.lightbulb.enabled": false,
+  "editor.minimap.enabled": false,
+  "editor.occurrencesHighlight": false,
+  "editor.parameterHints.enabled": false,
+  "editor.quickSuggestions": true,
+  "editor.renderLineHighlight": "none",
+  "editor.renderWhitespace": "none",
+  "editor.rulers": [],
+  "editor.scrollbar.verticalScrollbarSize": 0,
+  "editor.snippetSuggestions": "none",
+  "editor.suggest.showTypeParameters": true,
+  "editor.tabCompletion": "on",
+  "emacs-mcx.strictEmacsMove": true,
+  "emmet.includeLanguages": {
+    "django-html": "html"
+  },
+  "files.associations": {
+    "**/*.html": "html",
+    "**/requirements{/**,*}.{txt,in}": "pip-requirements",
+    "**/templates/**/*": "django-txt",
+    "**/templates/**/*.html": "django-html"
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/*.olean": true
+  },
+  "prettier.proseWrap": "always",
+  "python.formatting.provider": "black",
+  "python.linting.enabled": true,
+  "python.linting.mypyArgs": [
+    "--ignore-missing-imports",
+    "--follow-imports=silent",
+    "--check-untyped-defs"
+  ],
+  "python.linting.mypyEnabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintUseMinimalCheckers": false,
+  "python.linting.pylintArgs": ["--load-plugins"],
+  "scm.diffDecorationsGutterVisibility": "hover",
+  "window.nativeFullScreen": false,
+  "window.zoomLevel": 1,
+  "workbench.editorAssociations": [
+    {
+      "filenamePattern": "*.ipynb",
+      "viewType": "jupyter.notebook.ipynb"
+    }
+  ],
+  "zenMode.centerLayout": false,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.restore": true,
+  "python.languageServer": "Pylance",
+  "python.testing.autoTestDiscoverOnSaveEnabled": false,
+  "gitlens.codeLens.enabled": false,
+  "gitlens.codeLens.recentChange.enabled": false,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "zenMode.hideStatusBar": false,
+  "rust-analyzer.inlayHints.enable": false,
+  "editor.lineNumbers": "off",
+  "python.analysis.typeCheckingMode": "basic",
+  "breadcrumbs.enabled": false,
+  "settingsSync.ignoredExtensions": [
+    "esbenp.prettier-vscode"
+  ],
+  "prettier.documentSelectors": [
+    "*.ts"
+  ],
+  "workbench.sideBar.location": "right",
+  "terminal.external.osxExec": "iTerm 2.app",
+  "workbench.activityBar.visible": false,
+  "terminal.integrated.rendererType": "experimentalWebgl",
+  "workbench.colorTheme": "Default Light+",
+  "debug.toolBarLocation": "hidden"
+}

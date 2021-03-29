@@ -1,0 +1,18 @@
+[submodule "dotfiles"]
+	path = dotfiles
+	url = git@github.com:dandavison/dotfiles.git
+[submodule "shell-config"]
+	path = shell-config
+	url = git@github.com:dandavison/shell-config.git
+[submodule "emacs-config"]
+	path = emacs-config
+	url = git@github.com:dandavison/emacs-config.git
+[submodule "ohmyzsh"]
+	path = ohmyzsh
+	url = git@github.com:ohmyzsh/ohmyzsh.git
+[submodule "bin"]
+	path = bin
+	url = git@github.com:dandavison/bin.git
+[submodule "misc"]
+	path = misc
+	url = git@github.com:dandavison/misc.git

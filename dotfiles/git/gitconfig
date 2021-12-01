@@ -1,33 +1,114 @@
 [core]
-    # pager = sed 's/\t/├──┤/g' | delta
     pager = delta
     attributesfile = ~/devenv/config/git/gitattributes
     excludesfile = ~/.gitignore
     editor = emacsclient
 
 [include]
-    path = ~/devenv/delta/themes.gitconfig
-
-[delta]
-    # side-by-side-wrapped = true
-    # navigate = true
-    # features = coracias-caudatus
-    # dark = true
-    # features = collared-trogon
-    # commit-decoration-style = blue ol
-    features = hoopoe
-    commit-regex = "^[0-9a-f]{7}.? "
-    # line-numbers = false
+    path = ~/src/delta/themes.gitconfig
 
 [interactive]
     diffFilter = delta --color-only
 
+[delta]
+    light = true
+    features = decorations  # hoopoe2 my-color-moved-theme consistent-color-semantics navigate
+    keep-plus-minus-markers = false
+    # side-by-side = false
+
+[delta "my-color-moved-theme"]
+    git-moved-from-style = bold purple
+    git-moved-to-style = bold cyan
+    map-styles = "my-color-moved-theme.git-moved-from-style => red #cccccc, \
+                  my-color-moved-theme.git-moved-to-style => syntax #cccccc"
+
+[delta "consistent-color-semantics"]
+    # All added/removed content is styled the same, regardless of
+    # whether there is unchanged content on the same line.
+    minus-style = minus-emph-style
+    plus-style = plus-emph-style
+
+[delta "hoopoe2"]
+    light = true
+
+    pink = "#ffe0e0"
+    dark-pink = "#ffc0c0"
+    green = "#d0ffd0"
+    dark-green = "#a0efa0"
+
+    minus-emph-style = normal hoopoe2.pink
+    minus-non-emph-style = strike
+    plus-emph-style = syntax hoopoe2.green
+    plus-non-emph-style = syntax ul
+
+
+[delta "hoopoe-ul"]
+    light = true
+    pink = "#ffe0e0"
+    dark-pink = "#ffc0c0"
+    green = "#d0ffd0"
+    dark-green = "#a0efa0"
+
+    minus-emph-style = syntax github-theme.pink
+    minus-non-emph-style = normal ul # github-theme.pink-style
+    plus-emph-style = syntax github-theme.green
+    plus-non-emph-style = syntax ul # github-theme.green-style
+
+    minus-style = minus-emph-style  # this is the difference;
+    plus-style = plus-emph-style  # by default these are equal to *-non-emph
+
+
+    # minus-style = normal "#ffe0e0"
+    # plus-style = syntax "#d0ffd0"
+
+[delta "solarized-dark"]
+    syntax-theme = Solarized (dark)
+    pink-color = lightpink
+    blue-color = lightskyblue
+    minus-style = normal solarized-dark.pink-color
+    plus-style = syntax solarized-dark.blue-color
+    minus-emph-style = minus-style
+    plus-emph-style = plus-style
+    minus-non-emph-style = normal ul
+    plus-non-emph-style = syntax ul
+
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit blue
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = red
+    hunk-header-line-number-style = "#067a00"
+    hunk-header-style = file line-number syntax
+    # grep-match-style = syntax "#ffffaa"
+    # grep-match-file-style = "#00008b"
+    # grep-match-line-number-style = "#067a00"
+    # grep-match-file-style = cyan # "#ffc0cb"
+    # grep-match-style = syntax "#444444"
+    # grep-match-file-style = cyan
+    # grep-match-line-number-style = blue
+
+
+[delta "word-diff"]
+    minus-style = raw
+    minus-non-emph-style = raw
+    minus-emph-style = raw
+    plus-style = raw
+    plus-non-emph-style = raw
+    plus-emph-style = raw
+
 [commit]
     status = false
 
+# [color "diff"]
+# 	frag = red
+
+[blame]
+    coloring = highlightRecent
+
 [diff]
-	colorMoved = plain
-	submodule = log
+	# colorMoved = true
+	submodule = short # log # short # diff # short # log # short
 	frag = red
 	# colorMovedWS = allow-indentation-change
 
@@ -71,6 +152,7 @@
 # 	pretty = %C(magenta)%h %C(cyan)%cd %C(auto)%d%Creset %s
 
 [alias]
+    bat	= !sh -c 'git -c pager.show=\"bat --file-name='$1'\" show '$*
     blamestats = !~/git-utils/blamestats.py ${GIT_PREFIX:-.}
     branch-by-date = !~/devenv/misc/git-branch-by-date
     contributors = !git log --format=format:"%an" | sort | uniq -c | sort -rn
@@ -110,6 +192,5 @@
     rebase = !~/bin/git-rebase
     squash = !git reset --soft HEAD~1 && git commit --amend -C HEAD
     state = !"echo $(git rev-parse --abbrev-ref HEAD; git rev-parse HEAD; _diff=$(git diff; git diff --cached); [ -n \"$_diff\" ] && md5sum - <<< \"$_diff\")"
-
-[color "diff"]
-	frag = red
+[github]
+	user = dandavison

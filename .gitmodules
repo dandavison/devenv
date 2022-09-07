@@ -13,3 +13,6 @@
 [submodule "misc"]
 	path = misc
 	url = git@github.com:dandavison/misc.git
+[submodule "nu"]
+	path = nu
+	url = git@github.com:dandavison/nu.git

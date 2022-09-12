@@ -1,13 +1,28 @@
 [core]
-    pager = delta
+    pager = delta --light
 
 [interactive]
     diffFilter = delta --color-only
 
 [delta]
-    # light = true
-    # features = hoopoe2 decorations my-color-moved-theme consistent-color-semantics navigate # hoopoe2
-    # side-by-side = true
+   line-numbers-minus-style = minus-emph-style
+   line-numbers-plus-style = plus-emph-style
+   line-numbers-left-style = omit
+   line-numbers-right-style = omit
+   features = decorations navigate chtenb-light my-color-moved-theme-2 # consistent-color-semantics
+   # width = variable
+   relative-paths = true
+   hyperlinks = true
+   hyperlinks-file-link-format = "file-line-column://{path}:{line}"
+   diff-stat-align-width = 50
+
+[delta "dan-light"]
+    light = true
+    features = hoopoe2
+
+[delta "dan-dark"]
+    dark = true
+    features = solarized-dark
 
 [include]
     path = ~/src/delta/themes.gitconfig
@@ -15,8 +30,16 @@
 [delta "my-color-moved-theme"]
     git-moved-from-style = bold purple
     git-moved-to-style = bold cyan
-    map-styles = "my-color-moved-theme.git-moved-from-style => red #cccccc, \
-                  my-color-moved-theme.git-moved-to-style => syntax #cccccc"
+    map-styles = "my-color-moved-theme.git-moved-from-style => normal hoopoe2.dark-pink strike, \
+                  my-color-moved-theme.git-moved-to-style => syntax hoopoe2.dark-green ul"
+
+[delta "my-color-moved-theme-2"]
+    pink = "#ffe0e0"
+    green = "#d0ffd0"
+    git-moved-from-style = bold purple
+    git-moved-to-style = bold cyan
+    map-styles = "my-color-moved-theme.git-moved-from-style => normal my-color-moved-theme-2.pink ul, \
+                  my-color-moved-theme.git-moved-to-style => syntax my-color-moved-theme-2.green ul"
 
 [delta "decorations"]
     commit-decoration-style = blue ol
@@ -26,6 +49,11 @@
     hunk-header-file-style = red
     hunk-header-line-number-style = "#067a00"
     hunk-header-style = file line-number syntax
+
+[delta "blame"]
+    blame-separator-style = red
+    blame-code-style=syntax
+    blame-format= {author:<15.14}
 
 [delta "consistent-color-semantics"]
     # All added/removed content is styled the same, regardless of
@@ -62,14 +90,14 @@
 
 [delta "solarized-dark"]
     syntax-theme = Solarized (dark)
-    pink-color = lightpink
-    blue-color = lightskyblue
-    minus-style = normal solarized-dark.pink-color
-    plus-style = syntax solarized-dark.blue-color
-    minus-emph-style = minus-style
-    plus-emph-style = plus-style
-    minus-non-emph-style = normal ul
-    plus-non-emph-style = syntax ul
+    # pink-color = lightpink
+    # blue-color = lightskyblue
+    # minus-style = normal solarized-dark.pink-color
+    # plus-style = syntax solarized-dark.blue-color
+    # minus-emph-style = minus-style
+    # plus-emph-style = plus-style
+    # minus-non-emph-style = normal ul
+    # plus-non-emph-style = syntax ul
 
 [delta "grep"]
     # grep-match-style = syntax "#ffffaa"
@@ -88,4 +116,3 @@
     plus-style = raw
     plus-non-emph-style = raw
     plus-emph-style = raw
-

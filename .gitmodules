@@ -16,6 +16,9 @@
 [submodule "misc"]
 	path = misc
 	url = git@github.com:dandavison/misc.git
-[submodule "nu"]
-	path = nu
-	url = git@github.com:dandavison/nu.git
+[submodule "nushell"]
+	path = nushell
+	url = git@github.com:dandavison/nushell-config.git
+[submodule "tools"]
+	path = tools
+	url = git@github.com:dandavison/tools.git

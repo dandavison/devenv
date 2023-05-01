@@ -3,7 +3,10 @@
     "key": "alt+,",
     "command": "extension.multiCommand.execute",
     "args": {
-      "sequence": ["editor.action.addSelectionToNextFindMatch", "workbench.action.findInFiles"]
+      "sequence": [
+        "editor.action.addSelectionToNextFindMatch",
+        "workbench.action.findInFiles"
+      ]
     },
     "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
   },
@@ -41,7 +44,10 @@
     "key": "cmd+'",
     "command": "extension.multiCommand.execute",
     "args": {
-      "sequence": ["workbench.action.focusFirstEditorGroup", "workbench.action.togglePanel"]
+      "sequence": [
+        "workbench.action.focusFirstEditorGroup",
+        "workbench.action.togglePanel"
+      ]
     },
     "when": "panelFocus"
   },
@@ -132,7 +138,11 @@
     "key": "cmd+s",
     "command": "extension.multiCommand.execute",
     "args": {
-      "sequence": ["hideSuggestWidget", "removeSecondaryCursors", "workbench.action.files.save"]
+      "sequence": [
+        "hideSuggestWidget",
+        "removeSecondaryCursors",
+        "workbench.action.files.save"
+      ]
     },
     "when": "editorFocus"
   },
@@ -167,10 +177,6 @@
     "when": "inOutput"
   },
   {
-    "key": "ctrl+enter",
-    "command": "workbench.action.toggleMaximizedPanel"
-  },
-  {
     "key": "ctrl+home",
     "command": "workbench.action.problems.focus",
     "when": "inOutput"
@@ -191,7 +197,7 @@
     "when": "editorTextFocus && foldingEnabled"
   },
   {
-    "key": "ctrl+up",
+    "key": "shift+alt+.",
     "command": "goToPreviousReference",
     "when": "inReferenceSearchEditor || referenceSearchVisible"
   },
@@ -265,17 +271,17 @@
     "when": "inDebugMode && !focusedSessionIsAttach"
   },
   {
-    "key": "ctrl+c z",
+    "key": "cmd+=",
     "command": "settings.cycle.zen",
     "when": "editorFocus"
   },
   {
-    "key": "ctrl+x z",
+    "key": "ctrl+x shift+z",
     "command": "-workbench.action.toggleZenMode",
     "when": "!terminalFocus"
   },
   {
-    "key": "ctrl+x z",
+    "key": "ctrl+x shift+z",
     "command": "workbench.action.toggleZenMode"
   },
   {
@@ -290,11 +296,6 @@
       "sequence": ["list.select", "workbench.action.keepEditor"]
     },
     "when": "listFocus"
-  },
-  {
-    "key": "f12",
-    "command": "settings.cycle.zen",
-    "when": "editorFocus"
   },
   {
     "key": "shift+cmd+[",
@@ -358,7 +359,7 @@
     "command": "-extension.search"
   },
   {
-    "key": "alt+y",
+    "key": "shift+alt+u",
     "command": "editor.action.transformToUppercase"
   },
   {
@@ -370,11 +371,6 @@
     "key": "shift+alt+cmd+c",
     "command": "-copyRelativeFilePath",
     "when": "!editorFocus"
-  },
-  {
-    "key": "cmd+backspace",
-    "command": "alt-editor.openFile",
-    "when": "editorTextFocus"
   },
   {
     "key": "shift+alt+e",
@@ -495,7 +491,7 @@
     "command": "process.magitStatus"
   },
   {
-    "key": "shift+cmd+a",
+    "key": "cmd+a",
     "command": "editor.action.selectAll"
   },
   {
@@ -505,5 +501,64 @@
   {
     "key": "ctrl+c f",
     "command": "process.openFolders"
+  },
+  {
+    "key": "alt+x",
+    "command": "workbench.action.showCommands",
+    "when": "!config.emacs-mcx.useMetaPrefixMacCmd"
+  },
+  {
+    "key": "alt+x",
+    "command": "-workbench.action.showCommands",
+    "when": "!config.emacs-mcx.useMetaPrefixMacCmd"
+  },
+  {
+    "key": "alt+'",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+cmd+=",
+    "command": "workbench.action.splitEditorRight",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "shift+cmd+-",
+    "command": "workbench.action.splitEditorUp"
+  },
+  {
+    "key": "shift+cmd+;",
+    "command": "copyRelativeFilePath",
+    "when": "editorFocus"
+  },
+  {
+    "key": "cmd+k shift+alt+cmd+c",
+    "command": "-copyRelativeFilePath",
+    "when": "editorFocus"
+  },
+  {
+    "key": "right",
+    "command": "editor.action.inlineSuggest.commit",
+    "when": "inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorTabMovesFocus"
+  },
+  {
+    "key": "tab",
+    "command": "-editor.action.inlineSuggest.commit",
+    "when": "inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorTabMovesFocus"
+  },
+  {
+    "key": "shift+alt+.",
+    "command": "editor.action.goToReferences",
+    "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+  },
+  {
+    "key": "shift+f12",
+    "command": "-editor.action.goToReferences",
+    "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+  },
+  {
+    "key": "shift+f12",
+    "command": "-goToPreviousReference",
+    "when": "inReferenceSearchEditor || referenceSearchVisible"
   }
 ]

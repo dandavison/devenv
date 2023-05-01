@@ -20,7 +20,6 @@
     colorMovedWS = allow-indentation-change
     frag = red
     submodule = short
-    tool = difftastic
 
 [difftool]
     prompt = false
@@ -56,6 +55,8 @@
     short = true
 
 [user]
+    email = dandavison7@gmail.com
+    name = Dan Davison
     useConfigOnly = true
 
 [alias]

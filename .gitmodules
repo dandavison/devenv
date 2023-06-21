@@ -7,9 +7,6 @@
 [submodule "emacs-config"]
 	path = emacs-config
 	url = git@github.com:dandavison/emacs-config.git
-[submodule "ohmyzsh"]
-	path = ohmyzsh
-	url = git@github.com:ohmyzsh/ohmyzsh.git
 [submodule "bin"]
 	path = bin
 	url = git@github.com:dandavison/bin.git

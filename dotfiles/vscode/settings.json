@@ -6,7 +6,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[python]": {
-    "editor.defaultFormatter": "ms-python.python",
+    "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnPaste": false,
     "editor.formatOnSaveMode": "file",
     "editor.acceptSuggestionOnCommitCharacter": false,
@@ -16,7 +16,7 @@
     "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "vscode.typescript-language-features",
     "editor.acceptSuggestionOnCommitCharacter": false
   },
   "alt-editor.args": "--line {line} --column {column} {filename}",
@@ -123,7 +123,7 @@
   "python.analysis.typeCheckingMode": "basic",
   "python.envFile": "${workspaceFolder}/.env.dev",
   "python.formatting.blackArgs": ["--fast", "--line-length", "99"],
-  "python.formatting.provider": "black",
+  "python.formatting.provider": "none",
   "python.languageServer": "Pylance",
   "python.linting.enabled": true,
   "python.linting.mypyArgs": ["--check-untyped-defs"],
@@ -281,7 +281,7 @@
     },
     // {
     //   "alignment": "left",
-    //   "scriptFile": "/Users/ddavison/src/devenv/dotfiles/vscode/statusbar_commands/bsp-status.js",
+    //   "scriptFile": "/Users/dan/src/devenv/dotfiles/vscode/statusbar_commands/bsp-status.js",
     //   "scriptEvents": [
     //     "vscode.workspace.onDidSaveTextDocument",
     //     "vscode.window.onDidChangeActiveTextEditor",
@@ -326,7 +326,7 @@
   "terminal.explorerKind": "external",
   "terminal.integrated.profiles.osx": {
     "nushell": {
-      "path": "/Users/ddavison/bin/nu"
+      "path": "/Users/dan/bin/nu"
     }
   },
   "typescript.updateImportsOnFileMove.enabled": "always",
@@ -416,7 +416,7 @@
   ],
   "git.ignoreUntrackedDirFiles": true,
   "git.autorefresh": false,
-  // "git.path": "/Users/ddavison/src/misc/git-wrapper.sh",
+  // "git.path": "/Users/dan/src/misc/git-wrapper.sh",
   "git.enabled": false,
   "[toml]": {
     "editor.defaultFormatter": "bodil.prettier-toml"
@@ -433,7 +433,7 @@
   // "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "skip_trivial",
   // "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
   "yaml.schemas": {
-    "file:///Users/ddavison/.vscode/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    "file:///Users/dan/.vscode/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
   },
   "python.venvPath": "~/tmp/virtualenvs",
   "python.linting.flake8Args": ["--max-line-length", "200"],
@@ -474,17 +474,18 @@
   },
   "testing.saveBeforeTest": false,
   "metals.superMethodLensesEnabled": false,
-  "workbench.colorTheme": "Default Light+",
+  "workbench.colorTheme": "Default Light Modern",
   "editor.matchBrackets": "always",
-  "editor.lineNumbers": "on",
+  "editor.lineNumbers": "off",
   "editor.minimap.enabled": false,
   "errorLens.enabledDiagnosticLevels": ["warning", "info", "error"],
   "terminal.integrated.defaultProfile.osx": "Nushell",
-  "window.zoomLevel": 1,
   "cody.serverEndpoint": "https://sourcegraph.com",
   "cody.experimental.suggestions": true,
   "cody.codebase": "github.com/dandavison/delta",
   "cody.debug": true,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "window.zoomLevel": 1,
+  "remote.SSH.defaultExtensions": ["gitpod.gitpod-remote-ssh"]
   // "editor.quickSuggestionsDelay": 500
 }

@@ -19,3 +19,6 @@
 [submodule "tools"]
 	path = tools
 	url = git@github.com:dandavison/tools.git
+[submodule "nushell-config"]
+	path = nushell-config
+	url = git@github.com:dandavison/nushell-config.git

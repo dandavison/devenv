@@ -5,6 +5,7 @@ from pathlib import Path
 devenv = Path(__file__).parent.resolve()
 
 symlinks = [
+    ("~/.config/atuin", "dotfiles/atuin"),
     ("~/.config/zed", "dotfiles/zed"),
     ("~/.dircolors", "dotfiles/dircolors/dircolors"),
     ("~/.emacs", "emacs-config/emacs.el"),
@@ -15,14 +16,26 @@ symlinks = [
     ("~/.tmux.conf", "dotfiles/tmux/tmux.conf"),
     ("~/.zshrc", "shell-config/init.zsh"),
     ("~/bin", "bin"),
-    ("~/Library/Application Support/Code - Insiders/User/keybindings.json", "dotfiles/vscode/keybindings.json"),
-    ("~/Library/Application Support/Code - Insiders/User/settings.json", "dotfiles/vscode/settings.json"),
-    ("~/Library/Application Support/Code - Insiders/User/statusbar_commands", "dotfiles/vscode/statusbar_commands"),
-    ("~/Library/Application Support/Code - Insiders/User/tasks.json", "dotfiles/vscode/tasks.json"),
+    (
+        "~/Library/Application Support/Code - Insiders/User/keybindings.json",
+        "dotfiles/vscode/keybindings.json",
+    ),
+    (
+        "~/Library/Application Support/Code - Insiders/User/settings.json",
+        "dotfiles/vscode/settings.json",
+    ),
+    (
+        "~/Library/Application Support/Code - Insiders/User/statusbar_commands",
+        "dotfiles/vscode/statusbar_commands",
+    ),
+    (
+        "~/Library/Application Support/Code - Insiders/User/tasks.json",
+        "dotfiles/vscode/tasks.json",
+    ),
 ]
 
 for source, target in symlinks:
     source = Path(source).expanduser()
     source.parent.mkdir(parents=True, exist_ok=True)
-    target = (devenv / target)
+    target = devenv / target
     os.system(f'ln -sf "{target}" "{source}"')

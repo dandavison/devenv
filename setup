@@ -5,14 +5,21 @@ from pathlib import Path
 devenv = Path(__file__).parent.resolve()
 
 symlinks = [
+    ("~/.alacritty.yml", "dotfiles/alacritty/alacritty.yml"),
     ("~/.config/atuin", "dotfiles/atuin"),
     ("~/.config/zed", "dotfiles/zed"),
     ("~/.dircolors", "dotfiles/dircolors/dircolors"),
-    ("~/.emacs", "emacs-config/emacs.el"),
+    ("~/.emacs.d/init.el", "emacs-config/emacs.el"),
     ("~/.gitconfig", "dotfiles/git/gitconfig"),
     ("~/.hammerspoon/init.lua", "dotfiles/hammerspoon/init.lua"),
     ("~/.ohmyzsh", "ohmyzsh"),
     ("~/.pdbrc.py", "dotfiles/pdbrc.py"),
+    ("~/.pdbrc.py", "dotfiles/pdbrc.py"),
+    ("~/.pm.yml", "dotfiles/pm/pm.yml"),
+    (
+        "~/Library/Application\ Support/pypoetry/config.toml",
+        "dotfiles/pypoetry/config.toml"
+    ),
     ("~/.tmux.conf", "dotfiles/tmux/tmux.conf"),
     ("~/.zshrc", "shell-config/init.zsh"),
     ("~/bin", "bin"),

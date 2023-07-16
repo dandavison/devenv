@@ -18,26 +18,14 @@ symlinks = [
     ("~/.pm.yml", "dotfiles/pm/pm.yml"),
     (
         "~/Library/Application\ Support/pypoetry/config.toml",
-        "dotfiles/pypoetry/config.toml"
+        "dotfiles/pypoetry/config.toml",
     ),
     ("~/.tmux.conf", "dotfiles/tmux/tmux.conf"),
     ("~/.zshrc", "shell-config/init.zsh"),
     ("~/bin", "bin"),
     (
-        "~/Library/Application Support/Code - Insiders/User/keybindings.json",
-        "dotfiles/vscode/keybindings.json",
-    ),
-    (
-        "~/Library/Application Support/Code - Insiders/User/settings.json",
-        "dotfiles/vscode/settings.json",
-    ),
-    (
-        "~/Library/Application Support/Code - Insiders/User/statusbar_commands",
-        "dotfiles/vscode/statusbar_commands",
-    ),
-    (
-        "~/Library/Application Support/Code - Insiders/User/tasks.json",
-        "dotfiles/vscode/tasks.json",
+        "~/Library/Application Support/Code - Insiders/User",
+        "dotfiles/vscode",
     ),
 ]
 

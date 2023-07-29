@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import os
+import sys
 from pathlib import Path
 
 devenv = Path(__file__).parent.resolve()
@@ -7,15 +8,16 @@ devenv = Path(__file__).parent.resolve()
 symlinks = [
     ("~/.alacritty.yml", "dotfiles/alacritty/alacritty.yml"),
     ("~/.config/atuin", "dotfiles/atuin"),
+    ("~/.config/lsd", "dotfiles/lsd"),
     ("~/.config/zed", "dotfiles/zed"),
+    ("~/.digrc", "dotfiles/dig/digrc"),
     ("~/.dircolors", "dotfiles/dircolors/dircolors"),
     ("~/.emacs.d/init.el", "emacs-config/emacs.el"),
     ("~/.gitconfig", "dotfiles/git/gitconfig"),
     ("~/.hammerspoon/init.lua", "dotfiles/hammerspoon/init.lua"),
-    ("~/.ohmyzsh", "ohmyzsh"),
     ("~/.pdbrc.py", "dotfiles/pdbrc.py"),
     ("~/.pdbrc.py", "dotfiles/pdbrc.py"),
-    ("~/.pm.yml", "dotfiles/pm/pm.yml"),
+    ("~/.config/wormhole", "dotfiles/wormhole"),
     (
         "~/Library/Application\ Support/pypoetry/config.toml",
         "dotfiles/pypoetry/config.toml",
@@ -31,6 +33,9 @@ symlinks = [
 
 for source, target in symlinks:
     source = Path(source).expanduser()
+    if source.exists():
+        continue
     source.parent.mkdir(parents=True, exist_ok=True)
     target = devenv / target
     os.system(f'ln -sf "{target}" "{source}"')
+    print(f"{source} -> {target}")

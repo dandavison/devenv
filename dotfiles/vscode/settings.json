@@ -1,4 +1,5 @@
 {
+  "java.settings.url": "/Users/dan/src/devenv/dotfiles/eclipse/settings.prefs",
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -6,12 +7,28 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[python]": {
-    "editor.defaultFormatter": "ms-python.python",
-    "editor.formatOnPaste": false,
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
     "editor.formatOnSaveMode": "file",
     "editor.acceptSuggestionOnCommitCharacter": false,
-    "editor.formatOnType": true
+    "editor.formatOnType": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
   },
+  "isort.args": ["--profile", "black"],
+  "python.analysis.typeCheckingMode": "basic",
+  "python.envFile": "${workspaceFolder}/.env.dev",
+  "python.languageServer": "Pylance",
+  "python.linting.enabled": true,
+  "python.linting.mypyArgs": ["--check-untyped-defs"],
+  "python.linting.mypyPath": "/Users/dan/src/owldock/backend/.venv/bin/mypy",
+  "python.linting.pylintArgs": ["--load-plugins", "--rcfile=.pylintrc"],
+  "python.linting.pylintEnabled": false,
+  "python.testing.autoTestDiscoverOnSaveEnabled": false,
+  "python.testing.promptToConfigure": false,
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
   "[sql]": {
     "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
   },
@@ -26,10 +43,10 @@
   "editor.bracketPairColorization.enabled": true,
   "editor.cursorBlinking": "solid",
   "editor.foldingHighlight": false,
-  "editor.gotoLocation.multipleDeclarations": "gotoAndPeek",
-  "editor.gotoLocation.multipleDefinitions": "gotoAndPeek",
-  "editor.gotoLocation.multipleReferences": "gotoAndPeek",
-  "editor.gotoLocation.multipleTypeDefinitions": "gotoAndPeek",
+  "editor.gotoLocation.multipleDeclarations": "goto",
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "editor.gotoLocation.multipleReferences": "goto",
+  "editor.gotoLocation.multipleTypeDefinitions": "goto",
   "editor.inlineSuggest.enabled": true,
   "editor.lightbulb.enabled": false,
   "editor.occurrencesHighlight": false,
@@ -121,20 +138,6 @@
   },
   "prettier.documentSelectors": ["*.ts"],
   "prettier.singleQuote": true,
-  "python.analysis.typeCheckingMode": "basic",
-  "python.envFile": "${workspaceFolder}/.env.dev",
-  "python.formatting.blackArgs": ["--fast", "--line-length", "99"],
-  "python.formatting.provider": "black",
-  "python.languageServer": "Pylance",
-  "python.linting.enabled": true,
-  "python.linting.mypyArgs": ["--check-untyped-defs"],
-  "python.linting.mypyPath": "/Users/dan/src/owldock/backend/.venv/bin/mypy",
-  "python.linting.pylintArgs": ["--load-plugins", "--rcfile=.pylintrc"],
-  "python.linting.pylintEnabled": false,
-  "python.testing.autoTestDiscoverOnSaveEnabled": false,
-  "python.testing.promptToConfigure": false,
-  "python.testing.pytestEnabled": true,
-  "python.testing.unittestEnabled": false,
   "rewrap.wrappingColumn": 80,
   // "rust-analyzer.checkOnSave.command": "clippy",
   // "rust-analyzer.checkOnSave.extraArgs": ["--", "-D", "warnings"],
@@ -349,11 +352,6 @@
     "-Dmetals.statistics=all"
   ],
   "editor.guides.indentation": false,
-  "sourcegraph.remoteUrlReplacements": {
-    "git.twitter.biz": "git.twitter.biz/ro"
-  },
-  "sourcegraph.url": "https://sourcegraph.twitter.biz/",
-  "sourcegraph.defaultBranch": "master",
   "highlightwords.box": {
     "light": false,
     "dark": true
@@ -419,7 +417,6 @@
   },
   "liveshare.anonymousGuestApproval": "accept",
   "editor.suggest.showStatusBar": true,
-  "metals.javaHome": "/opt/twitter_mde/package/TwitterJDK11/current/Contents/Home",
   "diffEditor.codeLens": true,
   "terminal.integrated.enableMultiLinePasteWarning": false,
   // "rust-analyzer.hover.documentation.enable": false,
@@ -437,7 +434,7 @@
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "editor.suggest.showInlineDetails": false,
-  "errorLens.enabled": true,
+  "errorLens.enabled": false,
   "extensions.ignoreRecommendations": true,
   "errorLens.delay": 500,
   "zenMode.silentNotifications": false,
@@ -459,7 +456,7 @@
   "editor.wordWrapColumn": 777777,
   "css.colorDecorators.enable": true,
   "bracketLens.line": "none",
-  "bracketLens.mode": "auto",
+  "bracketLens.mode": "manual",
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -468,15 +465,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "testing.saveBeforeTest": false,
-  "metals.superMethodLensesEnabled": false,
   "editor.matchBrackets": "always",
   "editor.lineNumbers": "off",
-  "editor.minimap.enabled": false,
   "errorLens.enabledDiagnosticLevels": ["warning", "info", "error"],
-  "cody.serverEndpoint": "https://sourcegraph.com",
-  "cody.experimental.suggestions": true,
-  "cody.codebase": "github.com/dandavison/delta",
-  "cody.debug": true,
   "editor.formatOnSave": true,
   "remote.SSH.defaultExtensions": ["gitpod.gitpod-remote-ssh"],
   "CodeGPT.model": "gpt-4",
@@ -491,7 +482,6 @@
   },
   "diffEditor.experimental.collapseUnchangedRegions": true,
   "hipdotUrlSchemeGrabber.useVSCodeInsiders": true,
-  "editor.defaultFormatter": "ms-python.black-formatter",
   "workbench.colorTheme": "Default Light Modern",
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
@@ -501,7 +491,22 @@
   },
   "[ignore]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
-  }
-
-  // "editor.quickSuggestionsDelay": 500
+  },
+  "editor.gotoLocation.multipleImplementations": "goto",
+  "isort.check": true,
+  "editor.minimap.enabled": false,
+  "spotlessGradle.format.enable": true,
+  "spotlessGradle.diagnostics.enable": true,
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java"
+  },
+  "java.format.onType.enabled": false,
+  "java.format.comments.enabled": false,
+  "java.format.enabled": false,
+  "rust-analyzer.hover.memoryLayout.enable": false,
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "lldb.library": "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/LLDB",
+  "lldb.launch.expressions": "native"
 }

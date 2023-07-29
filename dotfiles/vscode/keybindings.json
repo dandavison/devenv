@@ -464,9 +464,9 @@
     "when": "editorTextFocus && !config.emacs-mcx.useMetaPrefixMacCmd"
   },
   {
-    "key": "shift+cmd+r",
+    "key": "cmd+r",
     "command": "workbench.action.reloadWindow",
-    "when": "isDevelopment"
+    "when": "editorFocus"
   },
   {
     "key": "cmd+r",
@@ -488,7 +488,7 @@
   },
   {
     "key": "cmd+m",
-    "command": "process.magitStatus"
+    "command": "etc.magitStatus"
   },
   {
     "key": "cmd+a",
@@ -500,7 +500,7 @@
   },
   {
     "key": "ctrl+c f",
-    "command": "process.openFolders"
+    "command": "etc.openFolders"
   },
   {
     "key": "alt+x",
@@ -557,7 +557,27 @@
     "when": "inReferenceSearchEditor || referenceSearchVisible"
   },
   {
+    "key": "shift+f12",
+    "command": "references-view.findReferences",
+    "when": "editorHasReferenceProvider"
+  },
+  {
+    "key": "cmd+l",
+    "command": "settings.cycle.lineNumbers",
+    "when": "editorFocus"
+  },
+  {
+    "key": "shift+cmd+'",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
     "key": "shift+cmd+l",
-    "command": "hipdot-vs-code-url-scheme-grabber.copyMarkdownLink"
+    "command": "etc.copyGithubUrl"
+  },
+  {
+    "key": "shift+=",
+    "command": "explorer.newFile",
+    "when": "explorerViewletFocus"
   }
 ]

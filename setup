@@ -29,6 +29,14 @@ symlinks = [
         "~/Library/Application Support/Code - Insiders/User",
         "dotfiles/vscode",
     ),
+    (
+        "~/Library/Application Support/Code/User",
+        "dotfiles/vscode",
+    ),
+    (
+        "~/.vscode/extensions/extensions.json",
+        "dotfiles/vscode/extensions.json",
+    ),
 ]
 
 for source, target in symlinks:

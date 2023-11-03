@@ -19,7 +19,7 @@ symlinks = [
     ("~/.pdbrc.py", "dotfiles/pdbrc.py"),
     ("~/.config/wormhole", "dotfiles/wormhole"),
     (
-        "~/Library/Application\ Support/pypoetry/config.toml",
+        "~/Library/Application Support/pypoetry/config.toml",
         "dotfiles/pypoetry/config.toml",
     ),
     ("~/.tmux.conf", "dotfiles/tmux/tmux.conf"),

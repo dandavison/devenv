@@ -1,3 +1,14 @@
+[user]
+    email = dandavison7@gmail.com
+    name = Dan Davison
+    useConfigOnly = true
+
+[github]
+    user = dandavison
+
+[includeIf "gitdir:~/src/temporalio/"]
+    path = ~/src/temporalio/.gitconfig
+
 [advice]
     detachedHead = false
 
@@ -6,6 +17,8 @@
 
 [color "diff"]
     frag = red
+    # oldMoved = red
+    # newMoved = green
 
 [commit]
     status = false
@@ -14,12 +27,14 @@
     # attributesfile = ~/devenv/dotfiles/git/gitattributes
     editor = emacsclient
     excludesfile = ~/.gitignore
+    default-branch = main
 
 [diff]
-    colorMoved = default
-    colorMovedWS = allow-indentation-change
+    # colorMoved = default
+    # colorMovedWS = allow-indentation-change
     frag = red
     submodule = short
+    # context = 999999
 
 [difftool]
     prompt = false
@@ -27,14 +42,14 @@
 [difftool "difftastic"]
     cmd = difft "$LOCAL" "$REMOTE"
 
-[github]
-    user = dandavison
-
 [include]
     path = ~/src/devenv/dotfiles/delta/delta.gitconfig
 
 [init]
     defaultBranch = main
+
+[log]
+    decorate = true
 
 [merge]
     conflictstyle = diff3
@@ -49,15 +64,13 @@
 [rebase]
     autosquash = true
 
+[clone]
+    recursive = true
+
 [status]
     aheadBehind = false
     hints = false
     short = true
-
-[user]
-    email = dandavison7@gmail.com
-    name = Dan Davison
-    useConfigOnly = true
 
 [alias]
     fixup = commit --amend -C HEAD
@@ -67,3 +80,11 @@
     clone = clone --recursive
 	# merge = merge --no-edit
 	# squash = !git reset --soft HEAD~1 && git commit --amend -C HEAD
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+	pushInsteadOf = https://github.com/
+	pushInsteadOf = git://github.com/
+
+[protocol "file"]
+	allow = always

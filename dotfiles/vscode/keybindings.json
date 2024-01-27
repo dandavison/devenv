@@ -52,14 +52,6 @@
     "when": "panelFocus"
   },
   {
-    "key": "cmd+'",
-    "command": "extension.multiCommand.execute",
-    "args": {
-      "sequence": ["workbench.action.focusPanel"]
-    },
-    "when": "!panelFocus"
-  },
-  {
     "key": "cmd+;",
     "command": "highlight.selectedWords",
     "when": "editorTextFocus"
@@ -73,23 +65,6 @@
     "key": "cmd+enter",
     "command": "-editor.action.insertLineAfter",
     "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "cmd+enter",
-    "command": "extension.multiCommand.execute",
-    "args": {
-      "sequence": [
-        "workbench.action.closeSidebar",
-        "workbench.action.closePanel",
-        "workbench.action.closeEditorsInOtherGroups"
-      ]
-    },
-    "when": "!panelFocus"
-  },
-  {
-    "key": "cmd+enter",
-    "command": "workbench.action.toggleMaximizedPanel",
-    "when": "panelFocus"
   },
   {
     "key": "cmd+k cmd+l",
@@ -203,11 +178,6 @@
   },
   {
     "key": "ctrl+up",
-    "command": "references-view.prev",
-    "when": "reference-list.hasResult && references-view.canNavigate"
-  },
-  {
-    "key": "ctrl+up",
     "command": "search.action.focusPreviousSearchResult",
     "when": "hasSearchResult || inSearchEditor"
   },
@@ -256,17 +226,12 @@
     "when": "editorFocus"
   },
   {
-    "key": "ctrl+x p",
-    "command": "settings.cycle.copilot",
-    "when": "editorFocus"
-  },
-  {
     "key": "ctrl+x r",
     "command": "settings.cycle.rust-analyzer-inlay-hints",
     "when": "editorFocus"
   },
   {
-    "key": "ctrl+x shift+ctrl+D",
+    "key": "shift+cmd+s",
     "command": "workbench.action.debug.stop",
     "when": "inDebugMode && !focusedSessionIsAttach"
   },
@@ -323,7 +288,7 @@
     "when": "editorTextFocus && foldingEnabled"
   },
   {
-    "key": "ctrl+shift+tab",
+    "key": "shift+alt+tab",
     "command": "editor.unfoldAll",
     "when": "editorTextFocus && foldingEnabled"
   },
@@ -401,7 +366,7 @@
     }
   },
   {
-    "key": "shift+alt+h",
+    "key": "alt+cmd+h",
     "command": "highlightwords.removeAllHighlights"
   },
   {
@@ -513,7 +478,7 @@
     "when": "!config.emacs-mcx.useMetaPrefixMacCmd"
   },
   {
-    "key": "alt+'",
+    "key": "cmd+.",
     "command": "editor.action.triggerSuggest",
     "when": "editorTextFocus"
   },
@@ -573,11 +538,123 @@
   },
   {
     "key": "shift+cmd+l",
+    "command": "etc.copyGithubMarkdownUrl"
+  },
+  {
+    "key": "alt+cmd+l",
     "command": "etc.copyGithubUrl"
   },
   {
     "key": "shift+=",
     "command": "explorer.newFile",
     "when": "explorerViewletFocus"
+  },
+  {
+    "key": "shift+cmd+.",
+    "command": "references-view.findImplementations"
+  },
+  {
+    "key": "shift+alt+h",
+    "command": "highlightwords.addRegExpHighlight"
+  },
+  {
+    "key": "shift+cmd+left",
+    "command": "workbench.files.action.collapseExplorerFolders",
+    "when": "explorerViewletFocus"
+  },
+  {
+    "key": "alt+down",
+    "command": "editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+  },
+  {
+    "key": "alt+up",
+    "command": "references-view.findReferences",
+    "when": "editorHasReferenceProvider"
+  },
+  {
+    "key": "shift+cmd+r",
+    "command": "manim-sideview.renderNewScene"
+  },
+  {
+    "key": "ctrl+' c",
+    "command": "-manim-sideview.renderNewScene"
+  },
+  {
+    "key": "cmd+p",
+    "command": "github.copilot.toggleCopilot"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "workbench.action.terminal.kill"
+  },
+  {
+    "key": "ctrl+'",
+    "command": "-editor.action.triggerSuggest",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+cmd+enter",
+    "command": "interactive.acceptChanges",
+    "when": "inlineChatHasProvider && inlineChatVisible && !inlineChatDocumentChanged || inlineChatHasProvider && inlineChatVisible && config.inlineChat.mode != 'preview'"
+  },
+  {
+    "key": "cmd+enter",
+    "command": "-interactive.acceptChanges",
+    "when": "inlineChatHasProvider && inlineChatVisible && !inlineChatDocumentChanged || inlineChatHasProvider && inlineChatVisible && config.inlineChat.mode != 'preview'"
+  },
+  {
+    "key": "ctrl+down",
+    "command": "list.focusDown",
+    "when": "listFocus && !inputFocus && !treestickyScrollFocused"
+  },
+  {
+    "key": "ctrl+up",
+    "command": "list.focusUp",
+    "when": "listFocus && !inputFocus && !treestickyScrollFocused"
+  },
+  {
+    "key": "cmd+enter",
+    "command": "etc.zoomPane"
+  },
+  {
+    "key": "shift+cmd+b",
+    "command": "etc.gitBlame"
+  },
+  {
+    "key": "shift+cmd+enter",
+    "command": "workbench.action.toggleMaximizedPanel"
+  },
+  {
+    "key": "shift+cmd+f",
+    "command": "etc.ripgrep"
+  },
+  {
+    "key": "ctrl+cmd+f",
+    "command": "workbench.action.findInFiles"
+  },
+  {
+    "key": "shift+cmd+f",
+    "command": "-workbench.action.findInFiles"
+  },
+  {
+    "key": "ctrl+cmd+f",
+    "command": "workbench.action.terminal.searchWorkspace",
+    "when": "terminalFocus && terminalProcessSupported && terminalTextSelected"
+  },
+  {
+    "key": "shift+cmd+f",
+    "command": "-workbench.action.terminal.searchWorkspace",
+    "when": "terminalFocus && terminalProcessSupported && terminalTextSelected"
+  },
+  {
+    "key": "ctrl+cmd+f",
+    "command": "workbench.view.search",
+    "when": "workbench.view.search.active && neverMatch =~ /doesNotMatch/"
+  },
+  {
+    "key": "shift+cmd+f",
+    "command": "-workbench.view.search",
+    "when": "workbench.view.search.active && neverMatch =~ /doesNotMatch/"
   }
 ]

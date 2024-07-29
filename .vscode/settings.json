@@ -1,0 +1,10 @@
+{
+  "git.ignoreLimitWarning": true,
+  "files.exclude": {
+    "dotfiles/vscode/History": true
+  },
+  "search.exclude": {
+    "dotfiles/vscode/History": true
+  },
+  "python.analysis.exclude": ["dotfiles/vscode/History"]
+}

@@ -15,6 +15,9 @@
 [blame]
     # coloring = highlightRecent
 
+[clone]
+    recursive = true
+
 [color "diff"]
     frag = red
     # oldMoved = red
@@ -22,6 +25,7 @@
 
 [commit]
     status = false
+    verify = false
 
 [core]
     # attributesfile = ~/devenv/dotfiles/git/gitattributes
@@ -29,12 +33,15 @@
     excludesfile = ~/.gitignore
     default-branch = main
 
+[commit]
+    verify = false
+
 [diff]
-    # colorMoved = default
+#    colorMoved = default
     # colorMovedWS = allow-indentation-change
     frag = red
     submodule = short
-    # context = 999999
+    context = 15
 
 [difftool]
     prompt = false
@@ -80,6 +87,7 @@
     clone = clone --recursive
 	# merge = merge --no-edit
 	# squash = !git reset --soft HEAD~1 && git commit --amend -C HEAD
+    diff-side-by-side = -c delta.features=side-by-side diff
 
 [url "git@github.com:"]
 	insteadOf = https://github.com/

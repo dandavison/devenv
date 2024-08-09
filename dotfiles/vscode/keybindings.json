@@ -67,6 +67,23 @@
     "when": "editorTextFocus && !editorReadonly"
   },
   {
+    "key": "cmd+enter",
+    "command": "extension.multiCommand.execute",
+    "args": {
+      "sequence": [
+        "workbench.action.closeSidebar",
+        "workbench.action.closePanel",
+        "workbench.action.closeEditorsInOtherGroups"
+      ]
+    },
+    "when": "!panelFocus"
+  },
+  {
+    "key": "cmd+enter",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "panelFocus"
+  },
+  {
     "key": "cmd+k cmd+l",
     "command": "-editor.toggleFold",
     "when": "editorTextFocus && foldingEnabled"
@@ -82,10 +99,6 @@
   {
     "key": "cmd+up",
     "command": "workbench.action.navigateUp"
-  },
-  {
-    "key": "cmd+m",
-    "command": "magit.status"
   },
   {
     "key": "cmd+n",
@@ -132,11 +145,6 @@
     "when": "reference-list.hasResult && references-view.canNavigate"
   },
   {
-    "key": "ctrl+down",
-    "command": "search.action.focusNextSearchResult",
-    "when": "hasSearchResult || inSearchEditor"
-  },
-  {
     "key": "ctrl+end",
     "command": "terminal.focus",
     "when": "inDebugRepl"
@@ -177,9 +185,14 @@
     "when": "inReferenceSearchEditor || referenceSearchVisible"
   },
   {
-    "key": "ctrl+up",
+    "key": "up",
     "command": "search.action.focusPreviousSearchResult",
-    "when": "hasSearchResult || inSearchEditor"
+    "when": "searchViewletVisible && (hasSearchResult || inSearchEditor)"
+  },
+  {
+    "key": "down",
+    "command": "search.action.focusNextSearchResult",
+    "when": "searchViewletVisible && (hasSearchResult || inSearchEditor)"
   },
   {
     "key": "ctrl+x ctrl+f",
@@ -278,11 +291,6 @@
     "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
   },
   {
-    "key": "shift+tab",
-    "command": "editor.foldAll",
-    "when": "editorTextFocus && foldingEnabled"
-  },
-  {
     "key": "cmd+k cmd+0",
     "command": "-editor.foldAll",
     "when": "editorTextFocus && foldingEnabled"
@@ -328,7 +336,7 @@
     "command": "editor.action.transformToUppercase"
   },
   {
-    "key": "shift+cmd+;",
+    "key": "shift+cmd+p",
     "command": "copyRelativeFilePath",
     "when": "!editorFocus"
   },
@@ -456,16 +464,16 @@
     "command": "etc.magitStatus"
   },
   {
+    "key": "cmd+shift+m",
+    "command": "etc.magitShow"
+  },
+  {
     "key": "cmd+a",
     "command": "editor.action.selectAll"
   },
   {
     "key": "cmd+a",
     "command": "-editor.action.selectAll"
-  },
-  {
-    "key": "ctrl+c f",
-    "command": "etc.openFolders"
   },
   {
     "key": "alt+x",
@@ -492,7 +500,7 @@
     "command": "workbench.action.splitEditorUp"
   },
   {
-    "key": "shift+cmd+;",
+    "key": "shift+cmd+p",
     "command": "copyRelativeFilePath",
     "when": "editorFocus"
   },
@@ -614,7 +622,7 @@
     "when": "listFocus && !inputFocus && !treestickyScrollFocused"
   },
   {
-    "key": "cmd+enter",
+    "key": "shift+alt+enter",
     "command": "etc.zoomPane"
   },
   {
@@ -626,16 +634,8 @@
     "command": "workbench.action.toggleMaximizedPanel"
   },
   {
-    "key": "shift+cmd+f",
-    "command": "etc.ripgrep"
-  },
-  {
     "key": "ctrl+cmd+f",
     "command": "workbench.action.findInFiles"
-  },
-  {
-    "key": "shift+cmd+f",
-    "command": "-workbench.action.findInFiles"
   },
   {
     "key": "ctrl+cmd+f",
@@ -682,5 +682,33 @@
   {
     "key": "cmd+f8",
     "command": "go-to-next-error.nextInFiles.warning"
+  },
+  {
+    "key": "shift+tab",
+    "command": "editor.foldAll"
+  },
+  {
+    "key": "cmd+b",
+    "command": "-mdx.toggleStrong",
+    "when": "editorTextFocus && !editorReadonly && editorLangId == 'mdx'"
+  },
+  {
+    "key": "shift+cmd+s",
+    "command": "-workbench.action.files.saveAs"
+  },
+  {
+    "key": "shift+cmd+s",
+    "command": "-workbench.action.files.saveLocalFile",
+    "when": "remoteFileDialogVisible"
+  },
+  {
+    "key": "shift+enter",
+    "command": "inlineChat.acceptChanges",
+    "when": "inlineChatHasProvider && inlineChatVisible && !inlineChatDocumentChanged || inlineChatHasProvider && inlineChatVisible && config.inlineChat.mode != 'preview'"
+  },
+  {
+    "key": "cmd+enter",
+    "command": "-inlineChat.acceptChanges",
+    "when": "inlineChatHasProvider && inlineChatVisible && !inlineChatDocumentChanged || inlineChatHasProvider && inlineChatVisible && config.inlineChat.mode != 'preview'"
   }
 ]

@@ -3,7 +3,6 @@
   "alt-editor.binary": "/Applications/IntelliJ IDEA.app/Contents/MacOS/idea",
   "bracketLens.line": "none",
   "bracketLens.mode": "none",
-  "CodeGPT.model": "gpt-4",
   "cSpell.enabled": false,
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -13,14 +12,12 @@
   "debug.inlineValues": "off",
   "debug.onTaskErrors": "showErrors",
   "diffEditor.codeLens": true,
-  "diffEditor.hideUnchangedRegions.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
-  "diffEditor.renderSideBySide": true,
+  "diffEditor.renderSideBySide": false,
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.bracketPairColorization.enabled": true,
   "editor.cursorBlinking": "solid",
   "editor.foldingHighlight": false,
-  "editor.formatOnSave": true,
   "editor.gotoLocation.multipleDeclarations": "goto",
   "editor.gotoLocation.multipleDefinitions": "goto",
   "editor.gotoLocation.multipleImplementations": "goto",
@@ -85,7 +82,8 @@
     "**/requirements{/**,*}.{txt,in}": "pip-requirements",
     "config": "toml",
     // "**/*.yaml": "yaml",
-    "*.jq": "jq"
+    "*.jq": "jq",
+    "*.mdx": "md"
   },
   "files.exclude": {
     "**/.git": true,
@@ -212,13 +210,7 @@
   "[ignore]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
-  "isort.args": ["--profile", "black"],
-  "isort.check": true,
-  "[java]": {
-    "editor.defaultFormatter": "redhat.java"
-  },
   "java.format.comments.enabled": false,
-  "java.format.enabled": false,
   "java.format.onType.enabled": false,
   "java.imports.gradle.wrapper.checksums": [
     {
@@ -278,13 +270,14 @@
   "prettier.documentSelectors": ["*.ts"],
   "prettier.singleQuote": true,
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnSave": true,
     "editor.formatOnSaveMode": "file",
     "editor.acceptSuggestionOnCommitCharacter": false,
     "editor.formatOnType": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
+      "source.organizeImports": "explicit",
+      "source.fixAll.ruff": "explicit"
     },
     "editor.wordBasedSuggestions": "off"
   },
@@ -302,26 +295,36 @@
       "name": "manim",
       "depth": 777,
       "includeAllSymbols": true
+    },
+    {
+      "name": "attrs",
+      "depth": -1
+    },
+    {
+      "name": "attr",
+      "depth": -1
+    },
+    {
+      "name": "cairo",
+      "depth": -1
     }
   ],
   "python.analysis.typeCheckingMode": "basic",
   "python.envFile": "${workspaceFolder}/.env.dev",
   "python.languageServer": "Pylance",
   "python.terminal.activateEnvironment": false,
-  "python.testing.autoTestDiscoverOnSaveEnabled": false,
-  "python.testing.promptToConfigure": false,
   "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": false,
   "redhat.telemetry.enabled": false,
   "remote.SSH.defaultExtensions": ["gitpod.gitpod-remote-ssh"],
-  "rewrap.wrappingColumn": 120,
+  "rewrap.wrappingColumn": 100,
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
-  "rust-analyzer.cargo.autoreload": false,
   "rust-analyzer.hover.actions.enable": true,
   "rust-analyzer.hover.memoryLayout.enable": false,
   "rust-analyzer.typing.autoClosingAngleBrackets.enable": true,
+  "rust-analyzer.diagnostics.disabled": ["unlinked-file"],
   "scm.diffDecorationsGutterVisibility": "hover",
   "search.showLineNumbers": true,
   "security.promptForLocalFileProtocolHandling": false,
@@ -494,6 +497,9 @@
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.stickyScroll.enabled": false,
   "testing.saveBeforeTest": false,
+  "[toml]": {
+    "editor.formatOnSave": false
+  },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.acceptSuggestionOnCommitCharacter": false,
@@ -506,7 +512,6 @@
   },
   "window.nativeFullScreen": false,
   "window.zoomLevel": 0.5,
-  "workbench.activityBar.location": "hidden",
   "workbench.colorCustomizations": {
     "editorError.foreground": "#FF0000",
     "editorInfo.foreground": "#0000FF",
@@ -515,9 +520,6 @@
     "editorGroup.border": "#282C34",
     "sideBar.border": "#282C34"
   },
-  // Github Light Theme
-  // "D2 Light"
-  "workbench.colorTheme": "Github Light Theme",
   "workbench.editor.empty.hint": "hidden",
   "workbench.editor.showTabs": "none",
   "workbench.editorAssociations": {
@@ -544,12 +546,23 @@
   "terminal.integrated.showLinkHover": false,
   "workbench.editor.enablePreview": false,
   "window.customTitleBarVisibility": "never",
-  "workbench.activityBar.location": "hidden",
   "editor.codeActionWidget.includeNearbyQuickFixes": false,
   "D2.previewSketch": true,
   "D2.updateTimer": 500,
   "window.restoreWindows": "none",
-  "rust-analyzer.check.command": "clippy"
+  "workbench.colorTheme": "Default Light Modern",
+  "terminal.integrated.defaultLocation": "editor",
+  "python.analysis.completeFunctionParens": false,
+  "java.format.enabled": false,
+  "rust-analyzer.showUnlinkedFileNotification": false,
+  "highlightwords.defaultMode": 2,
+  "editor.formatOnSave": true,
+  "mypy-type-checker.args": ["\"--check-untyped-defs\""],
+  "ruff.lint.preview": true,
+  "ruff.nativeServer": true,
+  "vale.doNotShowWarningForFileToBeSavedBeforeLinting": true,
+  "vale.enableSpellcheck": true,
+  "workbench.activityBar.location": "hidden"
 }
 // "rust-analyzer.checkOnSave.command": "clippy",
 // "rust-analyzer.checkOnSave.extraArgs": ["--", "-D", "warnings"],

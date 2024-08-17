@@ -27,7 +27,7 @@
   "editor.inlayHints.enabled": "offUnlessPressed",
   "editor.inlineSuggest.enabled": true,
   "editor.lightbulb.enabled": "off",
-  "editor.lineNumbers": "off",
+  "editor.lineNumbers": "on",
   "editor.matchBrackets": "always",
   "editor.minimap.enabled": false,
   "editor.occurrencesHighlight": "off",
@@ -81,9 +81,8 @@
     "**/*.html": "html",
     "**/requirements{/**,*}.{txt,in}": "pip-requirements",
     "config": "toml",
-    // "**/*.yaml": "yaml",
     "*.jq": "jq",
-    "*.mdx": "md"
+    "*.mdx": "markdown"
   },
   "files.exclude": {
     "**/.git": true,
@@ -562,7 +561,14 @@
   "ruff.nativeServer": true,
   "vale.doNotShowWarningForFileToBeSavedBeforeLinting": true,
   "vale.enableSpellcheck": true,
-  "workbench.activityBar.location": "hidden"
+  "workbench.activityBar.location": "hidden",
+  "git.confirmSync": false,
+  "markdown.validate.enabled": true,
+  "java.configuration.runtimes": [],
+  "java.import.gradle.java.home": "/opt/homebrew/opt/openjdk@17",
+  "java.import.gradle.home": "/opt/homebrew/opt/openjdk@17",
+  "java.jdt.ls.java.home": "/opt/homebrew/opt/openjdk@17",
+  "rust-analyzer.hover.actions.enable": false
 }
 // "rust-analyzer.checkOnSave.command": "clippy",
 // "rust-analyzer.checkOnSave.extraArgs": ["--", "-D", "warnings"],

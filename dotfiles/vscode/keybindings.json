@@ -676,10 +676,6 @@
     "command": "-workbench.action.nextEditor"
   },
   {
-    "key": "f8",
-    "command": "go-to-next-error.nextInFiles.error"
-  },
-  {
     "key": "cmd+f8",
     "command": "go-to-next-error.nextInFiles.warning"
   },
@@ -710,5 +706,10 @@
     "key": "cmd+enter",
     "command": "-inlineChat.acceptChanges",
     "when": "inlineChatHasProvider && inlineChatVisible && !inlineChatDocumentChanged || inlineChatHasProvider && inlineChatVisible && config.inlineChat.mode != 'preview'"
+  },
+  {
+    "key": "alt+up",
+    "command": "-editor.action.moveLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly"
   }
 ]

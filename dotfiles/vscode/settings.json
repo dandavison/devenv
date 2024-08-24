@@ -8,6 +8,12 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "css.colorDecorators.enable": true,
+  "cursor.cpp.disabledLanguages": ["plaintext", "markdown", "scminput"],
+  "[d2]": {
+    "editor.formatOnSave": true
+  },
+  "D2.previewSketch": true,
+  "D2.updateTimer": 500,
   "debug.console.acceptSuggestionOnEnter": "on",
   "debug.inlineValues": "off",
   "debug.onTaskErrors": "showErrors",
@@ -16,8 +22,10 @@
   "diffEditor.renderSideBySide": false,
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.bracketPairColorization.enabled": true,
+  "editor.codeActionWidget.includeNearbyQuickFixes": false,
   "editor.cursorBlinking": "solid",
   "editor.foldingHighlight": false,
+  "editor.formatOnSave": true,
   "editor.gotoLocation.multipleDeclarations": "goto",
   "editor.gotoLocation.multipleDefinitions": "goto",
   "editor.gotoLocation.multipleImplementations": "goto",
@@ -27,7 +35,7 @@
   "editor.inlayHints.enabled": "offUnlessPressed",
   "editor.inlineSuggest.enabled": true,
   "editor.lightbulb.enabled": "off",
-  "editor.lineNumbers": "off",
+  "editor.lineNumbers": "on",
   "editor.matchBrackets": "always",
   "editor.minimap.enabled": false,
   "editor.occurrencesHighlight": "off",
@@ -52,8 +60,8 @@
   "editor.suggestSelection": "first",
   "editor.trimAutoWhitespace": false,
   "editor.wordBasedSuggestions": "off",
-  "editor.wordWrapColumn": 777777,
   "editor.wordSeparators": "_`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
+  "editor.wordWrapColumn": 777777,
   "emacs-mcx.strictEmacsMove": true,
   "emmet.includeLanguages": {
     "django-html": "html"
@@ -93,7 +101,6 @@
     "**/Thumbs.db": true,
     "*.egg-info": true,
     "**/__pycache__": true,
-    // "**/.*": true,
     "**/.*_cache": true,
     "**/.classpath": true,
     "**/.factorypath": true,
@@ -112,6 +119,7 @@
   },
   "git.autorefresh": false,
   "git.autoRepositoryDetection": false,
+  "git.confirmSync": false,
   "git.enabled": true,
   "git.ignoreUntrackedDirFiles": true,
   "git.mergeEditor": false,
@@ -122,6 +130,7 @@
     "markdown": false,
     "scminput": false
   },
+  "githubPullRequests.pullBranch": "never",
   "githubPullRequests.remotes": ["origin"],
   "gitlens.advanced.messages": {
     "suppressGitDisabledWarning": true,
@@ -145,72 +154,39 @@
     "light": false,
     "dark": true
   },
-  "highlightwords.showSidebar": true,
   "highlightwords.colors": [
     {
-      "light": "#fad1e8", // pink
+      "light": "#fad1e8",
       "dark": "#fad1e8"
     },
     {
-      "light": "#bff7cf", // green
+      "light": "#bff7cf",
       "dark": "#bff7cf"
     },
     {
-      "light": "#c7eaf9", // blue
+      "light": "#c7eaf9",
       "dark": "#c7eaf9"
     },
     {
-      "light": "#fef680", // yellow
+      "light": "#fef680",
       "dark": "#fef680"
     }
-    // {
-    //   "light": "#b3d9ff",
-    //   "dark": "cyan"
-    // },
-    // {
-    //   "light": "#e6ffb3",
-    //   "dark": "pink"
-    // },
-    // {
-    //   "light": "#b3b3ff",
-    //   "dark": "lightgreen"
-    // },
-    // {
-    //   "light": "#ffd9b3",
-    //   "dark": "magenta"
-    // },
-    // {
-    //   "light": "#ffb3ff",
-    //   "dark": "cornflowerblue"
-    // },
-    // {
-    //   "light": "#b3ffb3",
-    //   "dark": "orange"
-    // },
-    // {
-    //   "light": "#ffff80",
-    //   "dark": "green"
-    // },
-    // {
-    //   "light": "#d1e0e0",
-    //   "dark": "red"
-    // }
   ],
+  "highlightwords.defaultMode": 2,
+  "highlightwords.showSidebar": true,
   "hipdotUrlSchemeGrabber.useVSCodeInsiders": true,
-  "[d2]": {
-    "editor.formatOnSave": true
-  },
-  "[markdown]": {
-    "editor.formatOnSave": false
-  },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[ignore]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
+  "java.configuration.runtimes": [],
   "java.format.comments.enabled": false,
+  "java.format.enabled": false,
   "java.format.onType.enabled": false,
+  "java.import.gradle.home": "/opt/homebrew/opt/openjdk@17",
+  "java.import.gradle.java.home": "/opt/homebrew/opt/openjdk@17",
   "java.imports.gradle.wrapper.checksums": [
     {
       "sha256": "946fe3f0e260713e0c57e430ab99e95a88e04376ef31e71ed117952896534e27",
@@ -221,6 +197,7 @@
       "allowed": true
     }
   ],
+  "java.jdt.ls.java.home": "/opt/homebrew/opt/openjdk@17",
   "java.project.importOnFirstTimeStartup": "automatic",
   "java.settings.url": "/Users/dan/src/devenv/dotfiles/eclipse/settings.prefs",
   "[javascript]": {
@@ -253,13 +230,18 @@
   "manim-sideview.previewAutoPlay": false,
   "manim-sideview.previewLooping": false,
   "manim-sideview.runOnSave": false,
+  "[markdown]": {
+    "editor.formatOnSave": false
+  },
   "markdown.preview.markEditorSelection": false,
+  "markdown.validate.enabled": true,
   "metals.serverProperties": [
     "-Xmx20G",
     "-XX:MaxInlineLevel=20",
     "-XX:+UseParallelGC",
     "-Dmetals.statistics=all"
   ],
+  "mypy-type-checker.args": ["\"--check-untyped-defs\""],
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "left"
@@ -283,6 +265,7 @@
   "python.analysis.autoFormatStrings": true,
   "python.analysis.autoImportCompletions": true,
   "python.analysis.autoSearchPaths": false,
+  "python.analysis.completeFunctionParens": false,
   "python.analysis.diagnosticMode": "workspace",
   "python.analysis.diagnosticSeverityOverrides": {
     "reportUnusedImport": "error",
@@ -316,14 +299,17 @@
   "python.testing.unittestEnabled": false,
   "redhat.telemetry.enabled": false,
   "remote.SSH.defaultExtensions": ["gitpod.gitpod-remote-ssh"],
-  "rewrap.wrappingColumn": 100,
+  "rewrap.wrappingColumn": 80,
+  "ruff.lint.preview": true,
+  "ruff.nativeServer": true,
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
-  "rust-analyzer.hover.actions.enable": true,
-  "rust-analyzer.hover.memoryLayout.enable": false,
-  "rust-analyzer.typing.autoClosingAngleBrackets.enable": true,
   "rust-analyzer.diagnostics.disabled": ["unlinked-file"],
+  "rust-analyzer.hover.actions.enable": false,
+  "rust-analyzer.hover.memoryLayout.enable": false,
+  "rust-analyzer.showUnlinkedFileNotification": false,
+  "rust-analyzer.typing.autoClosingAngleBrackets.enable": true,
   "scm.diffDecorationsGutterVisibility": "hover",
   "search.showLineNumbers": true,
   "security.promptForLocalFileProtocolHandling": false,
@@ -493,7 +479,9 @@
   ],
   "task.saveBeforeRun": "never",
   "terminal.explorerKind": "external",
+  "terminal.integrated.defaultLocation": "editor",
   "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "terminal.integrated.showLinkHover": false,
   "terminal.integrated.stickyScroll.enabled": false,
   "testing.saveBeforeTest": false,
   "[toml]": {
@@ -509,8 +497,13 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "vale.doNotShowWarningForFileToBeSavedBeforeLinting": true,
+  "vale.enableSpellcheck": true,
+  "window.customTitleBarVisibility": "never",
   "window.nativeFullScreen": false,
+  "window.restoreWindows": "none",
   "window.zoomLevel": 0.5,
+  "workbench.activityBar.location": "hidden",
   "workbench.colorCustomizations": {
     "editorError.foreground": "#FF0000",
     "editorInfo.foreground": "#0000FF",
@@ -519,7 +512,9 @@
     "editorGroup.border": "#282C34",
     "sideBar.border": "#282C34"
   },
+  "workbench.colorTheme": "Default Light Modern",
   "workbench.editor.empty.hint": "hidden",
+  "workbench.editor.enablePreview": false,
   "workbench.editor.showTabs": "none",
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
@@ -540,36 +535,45 @@
   "zenMode.hideStatusBar": false,
   "zenMode.restore": true,
   "zenMode.showTabs": "single",
-  "zenMode.silentNotifications": false,
-  "githubPullRequests.pullBranch": "never",
-  "terminal.integrated.showLinkHover": false,
-  "workbench.editor.enablePreview": false,
-  "window.customTitleBarVisibility": "never",
-  "editor.codeActionWidget.includeNearbyQuickFixes": false,
-  "D2.previewSketch": true,
-  "D2.updateTimer": 500,
-  "window.restoreWindows": "none",
-  "workbench.colorTheme": "Default Light Modern",
-  "terminal.integrated.defaultLocation": "editor",
-  "python.analysis.completeFunctionParens": false,
-  "java.format.enabled": false,
-  "rust-analyzer.showUnlinkedFileNotification": false,
-  "highlightwords.defaultMode": 2,
-  "editor.formatOnSave": true,
-  "mypy-type-checker.args": ["\"--check-untyped-defs\""],
-  "ruff.lint.preview": true,
-  "ruff.nativeServer": true,
-  "vale.doNotShowWarningForFileToBeSavedBeforeLinting": true,
-  "vale.enableSpellcheck": true,
-  "workbench.activityBar.location": "hidden",
-  "git.confirmSync": false,
-  "markdown.validate.enabled": true,
-  "java.configuration.runtimes": [],
-  "java.import.gradle.java.home": "/opt/homebrew/opt/openjdk@17",
-  "java.import.gradle.home": "/opt/homebrew/opt/openjdk@17",
-  "java.jdt.ls.java.home": "/opt/homebrew/opt/openjdk@17",
-  "rust-analyzer.hover.actions.enable": false
+  "zenMode.silentNotifications": false
 }
+// "**/.*": true,
+// pink
+// green
+// blue
+// yellow
+// {
+//   "light": "#b3d9ff",
+//   "dark": "cyan"
+// },
+// {
+//   "light": "#e6ffb3",
+//   "dark": "pink"
+// },
+// {
+//   "light": "#b3b3ff",
+//   "dark": "lightgreen"
+// },
+// {
+//   "light": "#ffd9b3",
+//   "dark": "magenta"
+// },
+// {
+//   "light": "#ffb3ff",
+//   "dark": "cornflowerblue"
+// },
+// {
+//   "light": "#b3ffb3",
+//   "dark": "orange"
+// },
+// {
+//   "light": "#ffff80",
+//   "dark": "green"
+// },
+// {
+//   "light": "#d1e0e0",
+//   "dark": "red"
+// }
 // "rust-analyzer.checkOnSave.command": "clippy",
 // "rust-analyzer.checkOnSave.extraArgs": ["--", "-D", "warnings"],
 // "rust-analyzer.inlayHints.maxLength": null,

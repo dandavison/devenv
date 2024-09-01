@@ -35,7 +35,7 @@
   "editor.inlayHints.enabled": "offUnlessPressed",
   "editor.inlineSuggest.enabled": true,
   "editor.lightbulb.enabled": "off",
-  "editor.lineNumbers": "on",
+  "editor.lineNumbers": "off",
   "editor.matchBrackets": "always",
   "editor.minimap.enabled": false,
   "editor.occurrencesHighlight": "off",
@@ -306,7 +306,7 @@
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
   "rust-analyzer.diagnostics.disabled": ["unlinked-file"],
-  "rust-analyzer.hover.actions.enable": false,
+  "rust-analyzer.hover.actions.enable": true,
   "rust-analyzer.hover.memoryLayout.enable": false,
   "rust-analyzer.showUnlinkedFileNotification": false,
   "rust-analyzer.typing.autoClosingAngleBrackets.enable": true,
@@ -477,7 +477,7 @@
       "text": "Zen Squiggles"
     }
   ],
-  "task.saveBeforeRun": "never",
+  "task.saveBeforeRun": false,
   "terminal.explorerKind": "external",
   "terminal.integrated.defaultLocation": "editor",
   "terminal.integrated.enableMultiLinePasteWarning": "never",
@@ -527,7 +527,14 @@
   "workspaceInStatusBar.priority": 0,
   "[yaml]": {
     "editor.formatOnSave": false,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.autoIndent": "advanced"
+  },
+  "[dockercompose]": {
+    "editor.autoIndent": "advanced"
+  },
+  "[github-actions-workflow]": {
+    "editor.autoIndent": "advanced"
   },
   "zenMode.centerLayout": false,
   "zenMode.fullScreen": true,
@@ -535,7 +542,10 @@
   "zenMode.hideStatusBar": false,
   "zenMode.restore": true,
   "zenMode.showTabs": "single",
-  "zenMode.silentNotifications": false
+  "zenMode.silentNotifications": false,
+  "files.saveConflictResolution": "overwriteFileOnDisk",
+  "files.autoSave": "onWindowChange",
+  "cursor.general.enableShadowWorkspace": true
 }
 // "**/.*": true,
 // pink

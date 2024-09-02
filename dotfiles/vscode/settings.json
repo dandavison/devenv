@@ -274,16 +274,11 @@
   "python.analysis.indexing": true,
   "python.analysis.packageIndexDepths": [
     {
-      "name": "manim",
-      "depth": 777,
-      "includeAllSymbols": true
-    },
-    {
       "name": "attrs",
       "depth": -1
     },
     {
-      "name": "attr",
+      "name": "click",
       "depth": -1
     },
     {
@@ -504,6 +499,8 @@
   "window.restoreWindows": "none",
   "window.zoomLevel": 0.5,
   "workbench.activityBar.location": "hidden",
+  // https://github.com/getcursor/cursor/issues/1570
+  "workbench.activityBar.orientation": "vertical",
   "workbench.colorCustomizations": {
     "editorError.foreground": "#FF0000",
     "editorInfo.foreground": "#0000FF",
@@ -545,7 +542,8 @@
   "zenMode.silentNotifications": false,
   "files.saveConflictResolution": "overwriteFileOnDisk",
   "files.autoSave": "onWindowChange",
-  "cursor.general.enableShadowWorkspace": true
+  "cursor.general.enableShadowWorkspace": true,
+  "comments.visible": false,
 }
 // "**/.*": true,
 // pink

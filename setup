@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import os
-import sys
 from pathlib import Path
 
 devenv = Path(__file__).parent.resolve()
@@ -32,6 +31,18 @@ symlinks = [
     (
         "~/Library/Application Support/Code/User",
         "dotfiles/vscode",
+    ),
+    (
+        "~/Library/Application Support/Cursor/User/keybindings.json",
+        "dotfiles/vscode/keybindings.json",
+    ),
+    (
+        "~/Library/Application Support/Cursor/User/settings.json",
+        "dotfiles/vscode/settings.json",
+    ),
+    (
+        "~/Library/Application Support/Cursor/User/snippets",
+        "dotfiles/vscode/snippets",
     ),
     (
         "~/.vscode/extensions/extensions.json",

@@ -12,7 +12,6 @@
   "[d2]": {
     "editor.formatOnSave": true
   },
-  "D2.previewSketch": true,
   "D2.updateTimer": 500,
   "debug.console.acceptSuggestionOnEnter": "on",
   "debug.inlineValues": "off",
@@ -313,14 +312,14 @@
   "python.testing.unittestEnabled": false,
   "redhat.telemetry.enabled": false,
   "remote.SSH.defaultExtensions": ["gitpod.gitpod-remote-ssh"],
-  "rewrap.wrappingColumn": 100,
+  "rewrap.wrappingColumn": 80,
   "ruff.lint.preview": true,
   "ruff.nativeServer": true,
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
   "rust-analyzer.diagnostics.disabled": ["unlinked-file"],
-  "rust-analyzer.hover.actions.enable": false,
+  "rust-analyzer.hover.actions.enable": true,
   "rust-analyzer.hover.memoryLayout.enable": false,
   "rust-analyzer.showUnlinkedFileNotification": false,
   "rust-analyzer.typing.autoClosingAngleBrackets.enable": true,
@@ -519,12 +518,11 @@
   "window.openFoldersInNewWindow": "on",
   "window.openWithoutArgumentsInNewWindow": "on",
   "window.zoomLevel": 0.5,
-  "workbench.activityBar.location": "hidden",
   "workbench.activityBar.orientation": "vertical",
   "workbench.colorCustomizations": {
-    "editorError.foreground": "#00000000",
-    "editorInfo.foreground": "#00000000",
-    "editorWarning.foreground": "#00000000",
+    "editorError.foreground": "#FF0000",
+    "editorInfo.foreground": "#0000FF",
+    "editorWarning.foreground": "#FFA500",
     "scrollbar.shadow": "#282C34",
     "editorGroup.border": "#282C34",
     "sideBar.border": "#282C34"
@@ -567,5 +565,19 @@
   "window.confirmSaveUntitledWorkspace": false,
   "FSharp.suggestGitignore": false,
   "cursor.cpp.enablePartialAccepts": true,
-  "java.compile.nullAnalysis.mode": "disabled"
+  "java.compile.nullAnalysis.mode": "disabled",
+  "D2.previewSketch": true,
+  "rewrap.autoWrap.enabled": true,
+  "prettifySymbolsMode.substitutions": [
+    {
+      // https://github.com/siegebell/vsc-prettify-symbols-mode/wiki/Python
+      "language": "python",
+      "substitutions": [
+        { "ugly": ">=", "pretty": "≥", "pre": "[^=\\-<>]|^", "post": "[^=\\-<>]|$" },
+        { "ugly": "<=", "pretty": "≤", "pre": "[^=\\-<>]|^", "post": "[^=\\-<>]|$" },
+        { "ugly": "!=", "pretty": "≠", "pre": "[^<>=!]|^", "post": "[^<>=]|$" },
+        { "ugly": "lambda", "pretty": "λ", "pre": "\\b", "post": "\\b" },
+      ]
+    }
+  ]
 }

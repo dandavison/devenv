@@ -38,12 +38,12 @@ local projects = {
     "sdk-python",
     "nexus-sdk-python",
     "samples-python",
+    "mcp-modelcontextprotocol",
+    "mcp-python-sdk",
+    "mcp-python-sdk-example-1",
+    "sdk-go",
+    "nexus-sdk-go",
     "temporal",
-    "api",
-    "samples-go",
-    "sdk-java",
-    "xolmis",
-    "linnet",
 }
 
 for i, project in ipairs(projects) do

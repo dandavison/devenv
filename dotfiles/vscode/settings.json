@@ -60,6 +60,9 @@
   "editor.wordBasedSuggestions": "off",
   "editor.wordSeparators": "_`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
   "editor.wordWrapColumn": 777777,
+  "editor.tokenColorCustomizations": {
+    "comments": "#1886468b"
+  },
   "emacs-mcx.strictEmacsMove": true,
   "emmet.includeLanguages": {
     "django-html": "html"
@@ -276,6 +279,7 @@
   "python.analysis.autoSearchPaths": false,
   "python.analysis.completeFunctionParens": false,
   "python.analysis.diagnosticMode": "workspace",
+  "python.analysis.typeCheckingMode": "basic",
   "python.analysis.diagnosticSeverityOverrides": {
     "reportUnusedImport": "error",
     "reportWildcardImportFromLibrary": "none",
@@ -304,15 +308,13 @@
       "depth": -1
     }
   ],
-  "python.analysis.typeCheckingMode": "basic",
   "python.envFile": "${workspaceFolder}/.env.dev",
-  "python.languageServer": "Pylance",
   "python.terminal.activateEnvironment": false,
   "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": false,
   "redhat.telemetry.enabled": false,
   "remote.SSH.defaultExtensions": ["gitpod.gitpod-remote-ssh"],
-  "rewrap.wrappingColumn": 90,
+  "rewrap.wrappingColumn": 100,
   "ruff.lint.preview": true,
   "ruff.nativeServer": true,
   "[rust]": {
@@ -591,5 +593,19 @@
   ],
   "cursor.cmdk.useThemedDiffBackground": false,
   "workbench.activityBar.location": "hidden",
-  "vscode-etc.wormhole.openOutsideWorkspace": true
+  "mypy-type-checker.showNotifications": "onError",
+  "mypy-type-checker.importStrategy": "fromEnvironment",
+  "cursorpyright.analysis.autoImportCompletions": true,
+  "cursorpyright.analysis.autoSearchPaths": false,
+  "cursorpyright.analysis.diagnosticMode": "workspace",
+  "cursorpyright.analysis.exclude": ["**/.venv/**"],
+  "cursorpyright.analysis.typeCheckingMode": "basic",
+  "cursorpyright.analysis.inlayHints.genericTypes": true,
+  "cursorpyright.analysis.inlayHints.variableTypes": true,
+  "cursorpyright.analysis.inlayHints.functionReturnTypes": true,
+  "cursorpyright.analysis.inlayHints.callArgumentNames": true,
+  "cursorpyright.analysis.logLevel": "Warning",
+  "cursorpyright.analysis.useTypingExtensions": true,
+  "ty.diagnosticMode": "workspace",
+  "cursorpyright.shouldImportPylanceSettings": "always"
 }

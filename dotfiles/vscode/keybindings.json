@@ -317,11 +317,6 @@
     "command": "editor.action.transformToUppercase"
   },
   {
-    "key": "shift+cmd+p",
-    "command": "copyRelativeFilePath",
-    "when": "!editorFocus"
-  },
-  {
     "key": "shift+alt+cmd+c",
     "command": "-copyRelativeFilePath",
     "when": "!editorFocus"
@@ -481,11 +476,6 @@
     "command": "workbench.action.splitEditorUp"
   },
   {
-    "key": "shift+cmd+p",
-    "command": "copyRelativeFilePath",
-    "when": "editorFocus"
-  },
-  {
     "key": "cmd+k shift+alt+cmd+c",
     "command": "-copyRelativeFilePath",
     "when": "editorFocus"
@@ -587,10 +577,6 @@
   {
     "key": "shift+cmd+b",
     "command": "etc.gitBlame"
-  },
-  {
-    "key": "shift+cmd+enter",
-    "command": "workbench.action.toggleMaximizedPanel"
   },
   {
     "key": "ctrl+cmd+f",
@@ -775,4 +761,44 @@
     "command": "-editor.action.inlineSuggest.acceptNextWord",
     "when": "cppSuggestion && !editorReadonly || inlineSuggestionVisible && !editorReadonly"
   },
+  {
+    "key": "shift+cmd+t",
+    "command": "vscode-etc.togglePythonTypeCheckingMode"
+},
+{
+    "key": "shift+enter",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+        "text": "\\\r\n"
+    },
+    "when": "terminalFocus"
+},
+{
+  "key": "alt+cmd+enter",
+  "command": "workbench.action.toggleMaximizeEditorGroup",
+  "when": "editorPartMaximizedEditorGroup || editorPartMultipleEditorGroups"
+},
+{
+  "key": "cmd+r cmd+m",
+  "command": "-workbench.action.toggleMaximizeEditorGroup",
+  "when": "editorPartMaximizedEditorGroup || editorPartMultipleEditorGroups"
+},
+{
+  "key": "cmd+w",
+  "command": "workbench.action.closeEditorsInGroup"
+},
+{
+  "key": "cmd+r w",
+  "command": "-workbench.action.closeEditorsInGroup"
+},
+{
+  "key": "alt+cmd+p",
+  "command": "copyRelativeFilePath",
+  "when": "editorFocus"
+},
+{
+  "key": "cmd+r shift+alt+cmd+c",
+  "command": "-copyRelativeFilePath",
+  "when": "editorFocus"
+},
 ]

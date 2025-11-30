@@ -1,6 +1,9 @@
 [core]
     pager = delta
 
+[pager]
+    log = rg -v '^ [0-9]+ files? changed' | sed 's/Dan Davison //'  | delta
+
 [interactive]
     diffFilter = delta --color-only
 
@@ -8,7 +11,7 @@
     path = /Users/dan/src/delta/themes.gitconfig
 
 [delta]
-    light = true
+    # light = true
     features = navigate whole-file-hunks
     hyperlinks = true
     relative-paths = true
@@ -16,19 +19,25 @@
     grep-file-style = red
     commit-decoration-style = blue ol
     commit-style = raw
+    commit-regex = ^▸
 
 
 [delta "whole-file-hunks"]
     # set diff.context (-U) to a large value
     hunk-header-style = omit
     # navigate visits file boundaries only
+    line-numbers = true
+    file-style="bold cyan #EEEEEE"
+    file-decoration-style="magenta ul"
     file-added-label = •
     file-modified-label = •
     file-removed-label = •
     file-renamed-label = •
-    line-numbers-minus-left-format = "{nm:^4}⁞"
-    line-numbers-plus-left-format = "{nm:^4}⁞"
-    navigate-regex = (^•|⁞)
+    line-numbers-left-format = ""
+    line-numbers-right-format = "{np:^4}│"
+    line-numbers-minus-right-format = "{np:^4}┃"
+    line-numbers-plus-right-format = "{np:^4}┃"
+    navigate-regex = (^•|┃)
 
 [delta "hunk-header-with-filepath"]
     file-style = omit

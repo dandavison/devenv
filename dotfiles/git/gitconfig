@@ -48,7 +48,7 @@
     # colorMovedWS = allow-indentation-change
     frag = red
     submodule = short
-    context = 7777 # 15
+    context = 15 # 7777 # 15
 
 [difftool]
     prompt = false
@@ -64,6 +64,7 @@
 
 [log]
     decorate = true
+    date = relative
 
 [merge]
     conflictstyle = zdiff3

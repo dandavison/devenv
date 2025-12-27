@@ -2,8 +2,7 @@
 require("hs.ipc")
 require("hs.eventtap")
 require("hs.notify")
-
-local hs = hs
+hs.loadSpoon('EmmyLua')
 
 Logger = hs.logger.new('dan', "debug")
 
@@ -12,13 +11,15 @@ Logger = hs.logger.new('dan', "debug")
 -- https://github.com/alacritty/alacritty/issues/862#issuecomment-616873890
 
 local function terminal()
-    local name = "Alacritty"
-
-    local app = hs.application.find(name:lower())
-    if app:isFrontmost() then
-        app:hide()
+    local app = hs.application.find("alacritty")
+    if app then
+        if app:isFrontmost() then
+            app:hide()
+        else
+            app:activate()
+        end
     else
-        hs.application.launchOrFocus("/Applications/" .. name .. ".app")
+        hs.application.launchOrFocus("/Applications/Alacritty.app")
     end
 end
 
@@ -34,52 +35,23 @@ local function wormholeNext()
     hs.http.get("http://wormhole:7117/next-project/", nil)
 end
 
+local function wormholePin()
+    hs.http.post("http://wormhole:7117/pin/", nil)
+end
+
 local keymap = {
-    ["act"] = {
-        "temporal",                 -- 1
-        "api",                      -- 2
-        "sdk-python",               -- 3
-        "samples-python",           -- 4
-        "api-go",                   -- 5
-        "devenv",                   -- 6
-        "rgi"                       -- 7
+    ["server"] = {
+        [1] = "temporal",
+        [2] = "api",
+        [3] = "api-go",
+        [4] = "bench-go",
+        [5] = "saas-cicd",
+        [6] = "saas-temporal",
+        [7] = "sdk-python",
+        [8] = "wormhole",
+        [9] = "devenv",
+        [0] = "temporal-all",
     },
-    ["temporal-all"] = {
-        "temporal-all",                 -- 1
-        "sdk-python",               -- 2
-        "nexus-sdk-python",         -- 3
-        "sdk-core",                 -- 4
-        "server",                   -- 5
-        "sdk-go"  ,                 -- 6
-        "sdk-java",                 -- 7
-        "sdk-typescript",           -- 8
-        "api",                      -- 9
-        "devenv",                   -- 0
-    },
-    ["nexus"] = {
-        "temporal-all",                 -- 1
-        "sdk-python",               -- 2
-        "nexus-sdk-python",         -- 3
-        "sdk-typescript",           -- 4
-        "nexus-sdk-typescript",     -- 5
-        "sdk-go"  ,                 -- 6
-        "nexus-sdk-go",             -- 7
-        "sdk-java",                 -- 8
-        "nexus-sdk-java",           -- 9
-        "devenv",                   -- 0
-    },
-    ["ai"] = {
-        "temporal-all",                 -- 1
-        "sdk-python",               -- 2
-        "mcp-python-sdk",           -- 3
-        "mcp-modelcontextprotocol", -- 4
-        "a2a-python",               -- 5
-        "a2a-samples",              -- 6
-        "nexus-a2a-python",         -- 7
-        "nexus-mcp-python",         -- 8
-        "samples-python",           -- 9
-        "devenv",                   -- 0
-    }
 }
 
 local function getActiveWorkspace()
@@ -89,7 +61,7 @@ local function getActiveWorkspace()
         file:close()
         return content:match("^%s*(.-)%s*$")
     end
-    return "act"
+    return "server"
 end
 
 local function getRepos()
@@ -97,8 +69,8 @@ local function getRepos()
     return keymap[workspace] or keymap["temporal"]
 end
 
-for i = 1, 10 do
-    hs.hotkey.bind({"cmd"}, tostring(i % 10), function()
+for i = 0, 9 do
+    hs.hotkey.bind({ "cmd" }, tostring(i), function()
         local repos = getRepos()
         local repo = repos[i]
         if repo then
@@ -107,16 +79,12 @@ for i = 1, 10 do
     end)
 end
 
-hs.hotkey.bind({}, "f16", terminal)
-hs.hotkey.bind({}, "f13", wormholeSelect)
-hs.hotkey.bind({ "cmd", "control" }, "left", wormholePrevious)
-hs.hotkey.bind({ "cmd", "control" }, "right", wormholeNext)
 
 local alertId = nil
 
 local function getAvailableRepos()
     local available = {}
-    local handle = io.popen("wormhole-list")
+    local handle = io.popen("wormhole list")
     if handle then
         for line in handle:lines() do
             local repo = line:match("^%s*(.-)%s*$") -- trim whitespace
@@ -135,13 +103,21 @@ local function showHotkeys()
     local availableRepos = getAvailableRepos()
 
     local lines = {}
-    table.insert(lines, {text = string.format("Workspace: %s", workspace), available = true})
-    table.insert(lines, {text = "", available = true})
+    table.insert(lines, { text = string.format("Workspace: %s", workspace), available = true })
+    table.insert(lines, { text = "", available = true })
 
-    for i, repo in ipairs(repos) do
-        local isAvailable = availableRepos[repo]
-        local line = string.format("%d    %s", i % 10, repo)
-        table.insert(lines, {text = line, available = isAvailable})
+    for i = 1, 9 do
+        local repo = repos[i]
+        if repo then
+            local isAvailable = availableRepos[repo]
+            local line = string.format("%d    %s", i, repo)
+            table.insert(lines, { text = line, available = isAvailable })
+        end
+    end
+    if repos[0] then
+        local isAvailable = availableRepos[repos[0]]
+        local line = string.format("0    %s", repos[0])
+        table.insert(lines, { text = line, available = isAvailable })
     end
 
     if alertId then
@@ -152,18 +128,18 @@ local function showHotkeys()
         local styledText = hs.styledtext.new("")
 
         for i, lineData in ipairs(lines) do
-            local color = lineData.available and {white = 1, alpha = 1} or {white = 0.5, alpha = 0.7}
+            local color = lineData.available and { white = 1, alpha = 1 } or { white = 0.5, alpha = 0.7 }
             local text = lineData.text .. (i < #lines and "\n" or "")
             local styledLine = hs.styledtext.new(text, {
-                font = {size = 14},
+                font = { size = 14 },
                 color = color
             })
             styledText = styledText .. styledLine
         end
 
         alertId = hs.alert.show(styledText, {
-            fillColor = {white = 0.1, alpha = 0.9},
-            strokeColor = {white = 0.3, alpha = 1},
+            fillColor = { white = 0.1, alpha = 0.9 },
+            strokeColor = { white = 0.3, alpha = 1 },
             strokeWidth = 2,
             radius = 10,
             fadeInDuration = 0.15,
@@ -176,7 +152,12 @@ local function showHotkeys()
     -- hs.execute(tmuxCmd, true)
 end
 
-hs.hotkey.bind({"cmd", "alt"}, "k", showHotkeys)
-hs.hotkey.bind({"cmd", "alt"}, "r", function()
+hs.hotkey.bind({}, "f16", terminal)
+hs.hotkey.bind({}, "f13", wormholeSelect)
+hs.hotkey.bind({ "cmd", "control" }, "left", wormholePrevious)
+hs.hotkey.bind({ "cmd", "control" }, "right", wormholeNext)
+hs.hotkey.bind({ "cmd", "control" }, ".", wormholePin)
+hs.hotkey.bind({ "cmd", "alt" }, "k", showHotkeys)
+hs.hotkey.bind({ "cmd", "alt" }, "r", function()
     hs.reload()
 end)

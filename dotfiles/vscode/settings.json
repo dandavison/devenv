@@ -41,6 +41,7 @@
   "editor.minimap.enabled": false,
   "editor.occurrencesHighlight": "off",
   "editor.overviewRulerBorder": false,
+  "editor.padding.top": 31,
   "editor.parameterHints.enabled": false,
   "editor.quickSuggestions": {
     "comments": false,
@@ -525,7 +526,7 @@
   "window.restoreWindows": "none",
   "window.openFoldersInNewWindow": "on",
   "window.openWithoutArgumentsInNewWindow": "on",
-  "window.zoomLevel": 0.5,
+  "window.zoomLevel": 0.3,
   "workbench.activityBar.orientation": "vertical",
   "workbench.colorCustomizations": {
     "editorRuler.foreground": "#fafafaf0",
@@ -656,5 +657,17 @@
   ],
   "highlight.configuration.wholeWord": false,
   "highlight.configuration.ignoreCase": true,
-  "breadcrumbs.enabled": false
+  "breadcrumbs.enabled": false,
+  "terminal.integrated.allowedLinkSchemes": [
+    "file",
+    "http",
+    "https",
+    "mailto",
+    "vscode",
+    "vscode-insiders",
+    "cursor"
+  ],
+  "Lua.workspace.library": [
+    "/Users/dan/.hammerspoon/Spoons/EmmyLua.spoon/annotations"
+  ]
 }

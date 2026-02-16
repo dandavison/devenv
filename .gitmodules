@@ -25,3 +25,6 @@
 [submodule "temporal"]
 	path = temporal
 	url = git@github.com:dandavison/temporalio-devenv.git
+[submodule "skills"]
+	path = skills
+	url = git@github.com:dandavison/agent-skills.git

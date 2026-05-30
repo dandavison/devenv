@@ -18,9 +18,10 @@ switch today, so flipping back to Cursor is *not* yet a one-liner.
    - VSCode: `/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code`
    - Cursor: `~/.local/bin/cursor`
 
-   Caveat: Cursor's "Install `code` command in PATH" silently overwrites this
-   symlink to point at Cursor. If `code` starts launching the wrong editor,
-   check `readlink ~/bin/code` first.
+   `~/bin/code` is the only `code` on `PATH`, so nothing competes with it. Its
+   git-committed target is VSCode; during the Cursor years it was manually
+   pointed at `~/.local/bin/cursor` and left uncommitted. Just keep `~/bin`
+   ahead of any `code` an editor might later install under `/usr/local/bin`.
 
 2. **Wormhole — one env var.** `WORMHOLE_EDITOR` (`shell-config/env.sh`) drives
    wormhole's CLI, `://` scheme, app-focus name, and extension-install dir.

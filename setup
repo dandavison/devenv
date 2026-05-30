@@ -33,18 +33,6 @@ symlinks = [
         "dotfiles/vscode",
     ),
     (
-        "~/Library/Application Support/Cursor/User/keybindings.json",
-        "dotfiles/vscode/keybindings.json",
-    ),
-    (
-        "~/Library/Application Support/Cursor/User/settings.json",
-        "dotfiles/vscode/settings.json",
-    ),
-    (
-        "~/Library/Application Support/Cursor/User/snippets",
-        "dotfiles/vscode/snippets",
-    ),
-    (
         "~/.vscode/extensions/extensions.json",
         "dotfiles/vscode/extensions.json",
     ),

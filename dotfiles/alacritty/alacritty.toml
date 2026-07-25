@@ -29,12 +29,6 @@ key = "Right"
 mods = "Command"
 
 [[keyboard.bindings]]
-# tmux scroll mode
-chars = "\u0002["
-key = "S"
-mods = "Command"
-
-[[keyboard.bindings]]
 action = "ToggleSimpleFullscreen"
 key = "Slash"
 mods = "Command"
@@ -82,9 +76,74 @@ key = "Comma"
 mods = "Command"
 
 [[keyboard.bindings]]
-chars = ""
+# tmux copy-mode (scroll mode)
+chars = "\u0002["
 key = "Q"
 mods = "Command"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
+
+# micro editor: Cmd-<key> -> raw escape sequences bound in micro/bindings.json
+
+# Cmd-C: copy Alacritty's selection when one exists, else pass through to micro
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Command"
+mode = "Selection"
+
+[[keyboard.bindings]]
+chars = "\u001bcmdc"
+key = "C"
+mods = "Command"
+mode = "~Selection"
+
+[[keyboard.bindings]]
+chars = "\u001bcmda"
+key = "A"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001bcmdd"
+key = "D"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001bcmdf"
+key = "F"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001bcmds"
+key = "S"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001bcmdx"
+key = "X"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001bcmdz"
+key = "Z"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001bcmdrd"
+key = "Z"
+mods = "Command|Shift"
+
+# Cmd-O -> Ctrl-O: open in the wormhole editor. In rgi/fzf opens the search
+# result (vs Enter, which opens micro in-terminal); in micro opens the
+# current line (Ctrl-o in micro/bindings.json).
+[[keyboard.bindings]]
+chars = "\u000f"
+key = "O"
+mods = "Command"
+
 
 [terminal]
 
@@ -113,8 +172,11 @@ background = "0xfffefe"
 foreground = "0x000000"
 
 [colors.cursor]
-cursor = "CellForeground"
+cursor = "0x0550ae"
 text = "CellBackground"
+
+[cursor]
+thickness = 0.4
 
 [cursor.style]
 shape = "Beam"
@@ -144,10 +206,11 @@ mods = "Command"
 
 [terminal.shell]
 args = ["new-session", "-A", "-s", "0"]
-program = "/opt/homebrew/bin/tmux"
+program = "/Users/dan/bin/tmux"
 
 [window]
 startup_mode = "SimpleFullscreen"
+option_as_alt = "OnlyLeft"   # or "Both"
 
 [window.padding]
 x = 7

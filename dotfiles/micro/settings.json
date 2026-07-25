@@ -1,0 +1,9 @@
+{
+	"backup": false,
+    "colorscheme": "github",
+    "cursorline": false,
+    "reload": "auto",
+    "ruler": false,
+    "statusformatr": "",
+    "xterm": true
+}

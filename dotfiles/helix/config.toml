@@ -1,0 +1,5 @@
+theme = "github_light"
+
+[editor]
+# No gutter at all: no line numbers, no diagnostics/diff "fringe" column.
+gutters = []

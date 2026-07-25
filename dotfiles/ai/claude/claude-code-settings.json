@@ -1,18 +1,65 @@
 {
+  "env": {
+    "TEMPORAL_IS_AGENT": "true",
+    "GIT_PAGER": ""
+  },
+  "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
       "Bash",
       "Edit",
+      "Glob",
       "Grep",
       "Read",
-      "Write"
+      "Write",
+      "WebSearch",
+      "WebFetch",
+      "mcp__notion__*",
+      "mcp__temporal-docs__*",
+      "Edit(~/.claude/skills/live-transcribe/**)"
+    ],
+    "deny": [
+      "Bash(ct)",
+      "Bash(ct *)",
+      "Bash(omni)",
+      "Bash(omni *)"
+    ],
+    "defaultMode": "bypassPermissions"
+  },
+  "model": "opus[1m]",
+  "statusLine": {
+    "type": "command",
+    "command": "/Users/dan/src/devenv/dotfiles/ai/claude/claude-statusline.sh"
+  },
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "spinnerTipsEnabled": false,
+  "spinnerVerbs": {
+    "mode": "replace",
+    "verbs": [
+      ""
     ]
   },
-  "model": "opus",
-  "enabledPlugins": {
-    "gopls-lsp@claude-plugins-official": true
-  },
+  "effortLevel": "high",
+  "promptSuggestionEnabled": false,
+  "tui": "default",
+  "autoMemoryEnabled": false,
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "light",
+  "fileCheckpointingEnabled": false,
   "feedbackSurveyState": {
     "lastShownTime": 1753986113236
+  },
+  "mcpServers": {
+    "notion": {
+      "type": "url",
+      "url": "https://mcp.notion.com/mcp"
+    },
+    "temporal-docs": {
+      "type": "url",
+      "url": "https://temporal.mcp.kapa.ai"
+    }
   }
 }

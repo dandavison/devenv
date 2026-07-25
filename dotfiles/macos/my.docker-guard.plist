@@ -3,14 +3,18 @@
 <plist version="1.0">
   <dict>
     <key>Label</key>
-    <string>my.startup</string>
+    <string>my.docker-guard</string>
     <key>ProgramArguments</key>
     <array>
-      <string>sh</string>
-      <string>-c</string>
-      <string>launchctl setenv OPEN_IN_EDITOR /Users/dan/bin/editor</string>
+      <string>/Users/dan/.local/bin/docker-guard</string>
     </array>
     <key>RunAtLoad</key>
     <true/>
+    <key>StartInterval</key>
+    <integer>30</integer>
+    <key>StandardErrorPath</key>
+    <string>/dev/null</string>
+    <key>StandardOutPath</key>
+    <string>/dev/null</string>
   </dict>
 </plist>

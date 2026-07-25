@@ -74,7 +74,8 @@
         "workbench.action.closeSidebar",
         "workbench.action.closePanel",
         "workbench.action.closeEditorsInOtherGroups",
-        "aichat.close-sidebar",
+        "aichat.close-sidebar",  // cursor
+        // "workbench.action.closeAuxiliaryBar",  // vscode
       ],
     },
     "when": "!panelFocus",
@@ -159,7 +160,12 @@
   },
   {
     "key": "ctrl+tab",
-    "command": "editor.unfoldRecursively",
+    "command": "etc.toggleFold",
+    "when": "editorTextFocus && foldingEnabled",
+  },
+  {
+    "key": "shift+tab",
+    "command": "etc.toggleFoldAll",
     "when": "editorTextFocus && foldingEnabled",
   },
   {
@@ -195,11 +201,6 @@
     "key": "ctrl+x f",
     "command": "settings.cycle.formatOnSave",
     "when": "editorFocus",
-  },
-  {
-    "key": "ctrl+x g",
-    "command": "workbench.action.tasks.runTask",
-    "args": "emacs-magit-status",
   },
   {
     "key": "ctrl+x i",
@@ -321,13 +322,6 @@
     "command": "workbench.action.navigateForward",
   },
   {
-    "key": "cmd+m",
-    "command": "command-runner.run",
-    "args": {
-      "command": "magit",
-    },
-  },
-  {
     "key": "cmd+,",
     "command": "editor.action.showHover",
     "when": "editorTextFocus",
@@ -400,14 +394,6 @@
     "when": "textInputFocus && !editorReadonly",
   },
   {
-    "key": "cmd+m",
-    "command": "etc.magitStatus",
-  },
-  {
-    "key": "cmd+shift+m",
-    "command": "etc.magitShow",
-  },
-  {
     "key": "cmd+a",
     "command": "editor.action.selectAll",
   },
@@ -467,12 +453,7 @@
   {
     "key": "shift+f12",
     "command": "references-view.findReferences",
-    "when": "editorHasReferenceProvider",
-  },
-  {
-    "key": "cmd+l",
-    "command": "settings.cycle.lineNumbers",
-    "when": "editorFocus",
+    "when": "editorHasReferenceProvider"
   },
   {
     "key": "shift+cmd+'",
@@ -505,7 +486,7 @@
   {
     "key": "alt+up",
     "command": "references-view.findReferences",
-    "when": "editorHasReferenceProvider",
+    "when": "editorHasReferenceProvider && editorTextFocus && !isInEmbeddedEditor",
   },
   {
     "key": "shift+cmd+r",
@@ -522,12 +503,12 @@
   },
   {
     "key": "shift+cmd+enter",
-    "command": "interactive.acceptChanges",
+    "command": "interactive.acceptChanges", // cursor
     "when": "inlineChatHasProvider && inlineChatVisible && !inlineChatDocumentChanged || inlineChatHasProvider && inlineChatVisible && config.inlineChat.mode != 'preview'",
   },
   {
     "key": "cmd+enter",
-    "command": "-interactive.acceptChanges",
+    "command": "-interactive.acceptChanges", // cursor
     "when": "inlineChatHasProvider && inlineChatVisible && !inlineChatDocumentChanged || inlineChatHasProvider && inlineChatVisible && config.inlineChat.mode != 'preview'",
   },
   {
@@ -577,10 +558,6 @@
     "command": "-workbench.action.nextEditor",
   },
   {
-    "key": "shift+tab",
-    "command": "editor.foldAll",
-  },
-  {
     "key": "cmd+b",
     "command": "-mdx.toggleStrong",
     "when": "editorTextFocus && !editorReadonly && editorLangId == 'mdx'",
@@ -605,26 +582,13 @@
     "when": "inlineChatHasProvider && inlineChatVisible && !inlineChatDocumentChanged || inlineChatHasProvider && inlineChatVisible && config.inlineChat.mode != 'preview'",
   },
   {
-    "key": "alt+up",
-    "command": "-editor.action.moveLinesUpAction",
-    "when": "editorTextFocus && !editorReadonly",
-  },
-  {
-    "key": "shift+cmd+k",
-    "command": "aichat.newchataction",
-  },
-  {
-    "key": "cmd+l",
-    "command": "-aichat.newchataction",
-  },
-  {
     "key": "shift+cmd+enter",
-    "command": "editor.action.inlineDiffs.acceptAll",
+    "command": "editor.action.inlineDiffs.acceptAll", // cursor
     "when": "editorTextFocus && (arbitrary function)",
   },
   {
     "key": "cmd+enter",
-    "command": "-editor.action.inlineDiffs.acceptAll",
+    "command": "-editor.action.inlineDiffs.acceptAll", // cursor
     "when": "editorTextFocus && (arbitrary function)",
   },
   {
@@ -639,7 +603,8 @@
   },
   {
     "key": "shift+cmd+b",
-    "command": "aichat.close-sidebar",
+    "command": "aichat.close-sidebar",  // cursor
+    // "command": "workbench.action.closeAuxiliaryBar" // vscode
   },
   {
     "key": "alt+cmd+m",
@@ -793,22 +758,22 @@
   },
   {
     "key": "shift+cmd+]",
-    "command": "composer.selectNextComposer",
+    "command": "composer.selectNextComposer", // cursor
     "when": "",
   },
   {
     "key": "alt+cmd+right",
-    "command": "-composer.selectNextComposer",
+    "command": "-composer.selectNextComposer", // cursor
     "when": "agentsPaneFocused && cursor.agentIdeUnification.enabled && !editorTextFocus || composerFocused && cursor.agentIdeUnification.enabled && !editorTextFocus",
   },
   {
     "key": "shift+cmd+[",
-    "command": "composer.selectPreviousComposer",
+    "command": "composer.selectPreviousComposer", // cursor
     "when": "",
   },
   {
     "key": "alt+cmd+left",
-    "command": "-composer.selectPreviousComposer",
+    "command": "-composer.selectPreviousComposer", // cursor
     "when": "agentsPaneFocused && cursor.agentIdeUnification.enabled && !editorTextFocus || composerFocused && cursor.agentIdeUnification.enabled && !editorTextFocus",
   },
   {
@@ -871,12 +836,12 @@
   },
   {
     "key": "shift+cmd+w",
-    "command": "composer.closeComposerTab",
+    "command": "composer.closeComposerTab", // cursor
     "when": "composerFocused && !editorTextFocus || !editorTextFocus && focusedView =~ /^workbench.panel.aichat.view/",
   },
   {
     "key": "cmd+w",
-    "command": "-composer.closeComposerTab",
+    "command": "-composer.closeComposerTab", // cursor
     "when": "composerFocused && !editorTextFocus || !editorTextFocus && focusedView =~ /^workbench.panel.aichat.view/",
   },
   {
@@ -922,4 +887,21 @@
     "command": "workbench.action.reloadWindow",
     "when": "editorFocus",
   },
+  {
+    "key": "cmd+m",
+    "command": "magit.status"
+  },
+  {
+    "key": "alt+x g",
+    "command": "-magit.status"
+  },
+  {
+    "key": "alt+cmd+s",
+    "command": "workbench.action.toggleUnifiedSidebarFromKeyboard", // cursor
+    "when": "!isAuxiliaryWindowFocusedContext"
+  },
+  {
+    "key": "cmd+k",
+    "command": "composerMode.agent" // cursor only
+  }
 ]

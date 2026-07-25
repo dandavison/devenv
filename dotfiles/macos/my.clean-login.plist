@@ -3,12 +3,14 @@
 <plist version="1.0">
   <dict>
     <key>Label</key>
-    <string>my.startup</string>
+    <string>my.clean-login</string>
     <key>ProgramArguments</key>
     <array>
-      <string>sh</string>
-      <string>-c</string>
-      <string>launchctl setenv OPEN_IN_EDITOR /Users/dan/bin/editor</string>
+      <string>defaults</string>
+      <string>-currentHost</string>
+      <string>delete</string>
+      <string>com.apple.loginwindow</string>
+      <string>TALAppsToRelaunchAtLogin</string>
     </array>
     <key>RunAtLoad</key>
     <true/>

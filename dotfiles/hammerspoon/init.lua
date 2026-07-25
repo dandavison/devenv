@@ -22,9 +22,13 @@ local function terminal()
     end
 end
 
--- Cursor toggle
-local function cursor()
-    local app = hs.application.find("Cursor")
+-- Editor toggle (f17). Pinned to VSCode rather than tracking the current
+-- editor (`wormhole editor`): doing so correctly needs the running-name vs
+-- launchable-name distinction (VSCode reports "Code" when running but launches
+-- as "Visual Studio Code") that wormhole's editor.rs already encodes but the
+-- hammerspoon module doesn't expose. Not worth duplicating here for now.
+local function code()
+    local app = hs.application.find("Code")
     if app then
         if app:isFrontmost() then
             app:hide()
@@ -32,12 +36,13 @@ local function cursor()
             app:activate()
         end
     else
-        hs.application.launchOrFocus("/Applications/Cursor.app")
+        hs.application.launchOrFocus("/Applications/Visual Studio Code.app")
     end
 end
 
 -- Project hotkey mappings (personal config)
 local keymap = {
+    [0] = "projects",
     [1] = "temporal",
     [2] = "api",
     [3] = "api-go",
@@ -47,14 +52,19 @@ local keymap = {
     [7] = "sdk-python",
     [8] = "wormhole",
     [9] = "devenv",
-    [0] = "temporal-all",
 }
 
 -- Keybindings
 wormhole.bindKeys(keymap)
 hs.hotkey.bind({}, "f16", terminal)
-hs.hotkey.bind({}, "f17", cursor)
+hs.hotkey.bind({}, "f17", code)
 hs.hotkey.bind({ "cmd", "alt" }, "r", function()
     hs.reload()
 end)
 hs.alert.show("♻️", 0.5)
+
+
+-- open "vscode://dandavison.vscode-etc/command?id=magit.status"
+
+-- # Hammerspoon
+-- hs.urlevent.openURL("vscode://dandavison.vscode-etc/command?id=magit.status")

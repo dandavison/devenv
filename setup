@@ -5,36 +5,57 @@ from pathlib import Path
 devenv = Path(__file__).parent.resolve()
 
 symlinks = [
-    ("~/.alacritty.yml", "dotfiles/alacritty/alacritty.yml"),
+    ("~/.alacritty.toml", "dotfiles/alacritty/alacritty.toml"),
     ("~/.config/atuin", "dotfiles/atuin"),
+    ("~/.config/gh/config.yml", "dotfiles/gh/config.yml"),
+    ("~/.config/gitu", "dotfiles/gitu"),
+    ("~/.config/helix", "dotfiles/helix"),
+    ("~/.config/jj/config.toml", "dotfiles/jj/config.toml"),
+    ("~/.config/karabiner", "dotfiles/karabiner"),
+    ("~/.config/litecli/config", "dotfiles/dbcli/litecli.ini"),
     ("~/.config/lsd", "dotfiles/lsd"),
+    ("~/.config/micro/bindings.json", "dotfiles/micro/bindings.json"),
+    ("~/.config/micro/init.lua", "dotfiles/micro/init.lua"),
+    ("~/.config/micro/settings.json", "dotfiles/micro/settings.json"),
+    ("~/.config/nvim", "dotfiles/nvim"),
+    ("~/.config/wormhole", "dotfiles/wormhole"),
     ("~/.config/zed", "dotfiles/zed"),
     ("~/.digrc", "dotfiles/dig/digrc"),
     ("~/.dircolors", "dotfiles/dircolors/dircolors"),
     ("~/.emacs.d/init.el", "emacs-config/emacs.el"),
+    ("~/.finicky.js", "dotfiles/finicky/finicky.js"),
     ("~/.gitconfig", "dotfiles/git/gitconfig"),
     ("~/.hammerspoon/init.lua", "dotfiles/hammerspoon/init.lua"),
-    ("~/.pdbrc.py", "dotfiles/pdbrc.py"),
-    ("~/.pdbrc.py", "dotfiles/pdbrc.py"),
-    ("~/.config/wormhole", "dotfiles/wormhole"),
+    ("~/.ipython/profile_default/ipython_config.py", "dotfiles/ipython/ipython_config.py"),
+    ("~/.lesskey", "dotfiles/less/lesskey"),
+    ("~/.pdbrc.py", "dotfiles/pdb/pdbrc.py"),
+    ("~/.shellcheckrc", "dotfiles/shellcheck/shellcheckrc"),
+    ("~/.tmux.conf", "dotfiles/tmux/tmux.conf"),
+    ("~/.wezterm.lua", "dotfiles/wezterm/wezterm.lua"),
+    ("~/.zshrc", "shell-config/init.zsh"),
+    ("~/AGENTS.md", "temporal/dotfiles/AGENTS.md"),
+    ("~/CLAUDE.md", "~/AGENTS.md"),
+    ("~/GEMINI.md", "~/AGENTS.md"),
+    ("~/bin", "bin"),
     (
         "~/Library/Application Support/pypoetry/config.toml",
         "dotfiles/pypoetry/config.toml",
     ),
-    ("~/.tmux.conf", "dotfiles/tmux/tmux.conf"),
-    ("~/.zshrc", "shell-config/init.zsh"),
-    ("~/bin", "bin"),
     (
-        "~/Library/Application Support/Code - Insiders/User",
-        "dotfiles/vscode",
+        "~/Library/Application Support/Code/User/settings.json",
+        "dotfiles/vscode/settings.json",
     ),
     (
-        "~/Library/Application Support/Code/User",
-        "dotfiles/vscode",
+        "~/Library/Application Support/Code/User/keybindings.json",
+        "dotfiles/vscode/keybindings.json",
     ),
     (
-        "~/.vscode/extensions/extensions.json",
-        "dotfiles/vscode/extensions.json",
+        "~/Library/Application Support/Code - Insiders/User/settings.json",
+        "dotfiles/vscode/settings.json",
+    ),
+    (
+        "~/Library/Application Support/Code - Insiders/User/keybindings.json",
+        "dotfiles/vscode/keybindings.json",
     ),
 ]
 
@@ -43,6 +64,6 @@ for source, target in symlinks:
     if source.exists():
         continue
     source.parent.mkdir(parents=True, exist_ok=True)
-    target = devenv / target
+    target = Path(target).expanduser() if target.startswith("~") else devenv / target
     os.system(f'ln -sf "{target}" "{source}"')
     print(f"{source} -> {target}")

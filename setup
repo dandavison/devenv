@@ -39,6 +39,10 @@ symlinks = [
         "dotfiles/vscode/keybindings.json",
     ),
     (
+        "~/Library/Application Support/FluidVoice/parakeet_custom_vocabulary.json",
+        "dotfiles/fluidvoice/parakeet_custom_vocabulary.json",
+    ),
+    (
         "~/Library/Application Support/Code - Insiders/User/settings.json",
         "dotfiles/vscode/settings.json",
     ),

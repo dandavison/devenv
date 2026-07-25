@@ -5,6 +5,7 @@ from pathlib import Path
 devenv = Path(__file__).parent.resolve()
 
 symlinks = [
+    ("~/.agents", "dotfiles/ai/agents"),
     ("~/.alacritty.toml", "dotfiles/alacritty/alacritty.toml"),
     ("~/.config/atuin", "dotfiles/atuin"),
     ("~/.config/gh/config.yml", "dotfiles/gh/config.yml"),

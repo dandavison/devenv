@@ -16,6 +16,7 @@ symlinks = [
     ("~/.config/micro/init.lua", "dotfiles/micro/init.lua"),
     ("~/.config/micro/settings.json", "dotfiles/micro/settings.json"),
     ("~/.config/wormhole", "dotfiles/wormhole"),
+    ("~/.cursor/cli-config.json", "~/src/devenv/dotfiles/ai/cursor/cli-config.json"),
     ("~/.digrc", "dotfiles/dig/digrc"),
     ("~/.emacs.d/init.el", "emacs-config/emacs.el"),
     ("~/.finicky.js", "dotfiles/finicky/finicky.js"),

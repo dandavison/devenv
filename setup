@@ -56,9 +56,12 @@ symlinks = [
 
 for source, target in symlinks:
     source = Path(source).expanduser()
-    if source.exists():
-        continue
-    source.parent.mkdir(parents=True, exist_ok=True)
-    target = Path(target).expanduser() if target.startswith("~") else devenv / target
-    os.system(f'ln -sf "{target}" "{source}"')
-    print(f"{source} -> {target}")
+    if source.is_symlink():
+        print(f"{source} -> {os.readlink(source)}")
+    elif source.exists():
+        print(f"WARNING: {source} exists but is not a symlink")
+    else:
+        source.parent.mkdir(parents=True, exist_ok=True)
+        target = Path(target).expanduser() if target.startswith("~") else devenv / target
+        os.system(f'ln -sf "{target}" "{source}"')
+        print(f"created: {source} -> {target}")

@@ -7,6 +7,8 @@ devenv = Path(__file__).parent.resolve()
 symlinks = [
     ("~/.agents", "dotfiles/ai/agents"),
     ("~/.alacritty.toml", "dotfiles/alacritty/alacritty.toml"),
+    ("~/.codex/AGENTS.md", "temporal/dotfiles/AGENTS.md"),
+    ("~/.codex/config.toml", "dotfiles/codex/config.toml"),
     ("~/.config/atuin", "dotfiles/atuin"),
     ("~/.config/gh/config.yml", "dotfiles/gh/config.yml"),
     ("~/.config/gitu", "dotfiles/gitu"),
@@ -29,8 +31,8 @@ symlinks = [
     ("~/.tmux.conf", "dotfiles/tmux/tmux.conf"),
     ("~/.zshrc", "shell-config/init.zsh"),
     ("~/AGENTS.md", "temporal/dotfiles/AGENTS.md"),
-    ("~/CLAUDE.md", "~/AGENTS.md"),
-    ("~/GEMINI.md", "~/AGENTS.md"),
+    ("~/CLAUDE.md", "temporal/dotfiles/AGENTS.md"),
+    ("~/GEMINI.md", "temporal/dotfiles/AGENTS.md"),
     ("~/bin", "bin"),
     (
         "~/Library/Application Support/Code/User/settings.json",

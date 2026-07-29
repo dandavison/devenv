@@ -5,6 +5,8 @@ from pathlib import Path
 devenv = Path(__file__).parent.resolve()
 
 symlinks = [
+    ("/Applications/Alacritty.app", "~/src/alacritty/target/release/osx/Alacritty.app"),
+    ("/Applications/Wormhole.app", "~/src/wormhole/gui/dist/Wormhole/Wormhole.app"),
     ("~/.agents", "dotfiles/ai/agents"),
     ("~/.alacritty.toml", "dotfiles/alacritty/alacritty.toml"),
     ("~/.codex/AGENTS.md", "temporal/dotfiles/AGENTS.md"),

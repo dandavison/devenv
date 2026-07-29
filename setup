@@ -29,7 +29,7 @@ symlinks = [
     ("~/.pdbrc.py", "dotfiles/pdb/pdbrc.py"),
     ("~/.shellcheckrc", "dotfiles/shellcheck/shellcheckrc"),
     ("~/.tmux.conf", "dotfiles/tmux/tmux.conf"),
-    ("~/.zshrc", "shell-config/init.zsh"),
+    ("~/.zshrc", "shell/init.zsh"),
     ("~/AGENTS.md", "temporal/dotfiles/AGENTS.md"),
     ("~/CLAUDE.md", "temporal/dotfiles/AGENTS.md"),
     ("~/GEMINI.md", "temporal/dotfiles/AGENTS.md"),

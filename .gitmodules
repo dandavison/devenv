@@ -1,8 +1,8 @@
 [submodule "shell"]
 	path = shell
 	url = git@github.com:dandavison/shell-config.git
-[submodule "emacs-config"]
-	path = emacs-config
+[submodule "emacs"]
+	path = emacs
 	url = git@github.com:dandavison/emacs-config.git
 [submodule "bin"]
 	path = bin

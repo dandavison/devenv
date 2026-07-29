@@ -34,7 +34,7 @@ switch today, so flipping back to Cursor is *not* yet a one-liner.
    - `shell/alias.sh` — the `e` (magit) alias
    - `shell/lib.sh` — `fdd`
    - `tools/bash/rg-delta`
-   - `emacs-config/lib.el` — `dan/open-in-vscode`
+   - `emacs/lib.el` — `dan/open-in-vscode`
 
 4. **GUI app/process targeting — hardcoded.** Reference the app by name/path:
    - `dotfiles/hammerspoon/init.lua` — f17 toggle (`find("Code")`, `Visual Studio Code.app`)

@@ -1,0 +1,50 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(ls)"
+    ],
+    "deny": []
+  },
+  "version": 1,
+  "editor": {
+    "vimMode": false
+  },
+  "model": {
+    "modelId": "claude-4.6-opus-high-thinking",
+    "displayModelId": "opus-4.6-thinking",
+    "displayName": "Claude 4.6 Opus (Thinking)",
+    "displayNameShort": "Opus 4.6 (Thinking)",
+    "aliases": [
+      "opus-4.6-thinking",
+      "claude-4.6-opus-thinking"
+    ],
+    "maxMode": false
+  },
+  "hasChangedDefaultModel": false,
+  "maxMode": false,
+  "privacyCache": {
+    "ghostMode": true,
+    "privacyMode": 1,
+    "updatedAt": 1771219067042
+  },
+  "authInfo": {
+    "email": "dan.davison@temporal.io",
+    "displayName": "Dan Davison",
+    "teamId": 9292857,
+    "teamName": "Temporal Technologies",
+    "userId": 72255265,
+    "authId": "google-oauth2|user_01J86CV7D6EP88QWV5XH2031XR"
+  },
+  "network": {
+    "useHttp1ForAgent": false
+  },
+  "approvalMode": "allowlist",
+  "sandbox": {
+    "mode": "disabled",
+    "networkAccess": "user_config_with_defaults"
+  },
+  "attribution": {
+    "attributeCommitsToAgent": true,
+    "attributePRsToAgent": true
+  }
+}

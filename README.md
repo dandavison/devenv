@@ -23,16 +23,16 @@ switch today, so flipping back to Cursor is *not* yet a one-liner.
    pointed at `~/.local/bin/cursor` and left uncommitted. Just keep `~/bin`
    ahead of any `code` an editor might later install under `/usr/local/bin`.
 
-2. **Wormhole — one env var.** `WORMHOLE_EDITOR` (`shell-config/env.sh`) drives
+2. **Wormhole — one env var.** `WORMHOLE_EDITOR` (`shell/env.sh`) drives
    wormhole's CLI, `://` scheme, app-focus name, and extension-install dir.
    Values: `code`, `code-insiders`, `cursor`. (Wormhole's embedded panel always
    uses VSCode `serve-web`, which Cursor does not support — independent of this.)
 
 3. **URL-scheme emitters — hardcoded.** These emit `vscode://` (Cursor uses
    `cursor://`) and are *not* yet variabilised:
-   - `shell-config/env.sh` — `HYPERLINKED_SCHEME` (this one *is* a var)
-   - `shell-config/alias.sh` — the `e` (magit) alias
-   - `shell-config/lib.sh` — `fdd`
+   - `shell/env.sh` — `HYPERLINKED_SCHEME` (this one *is* a var)
+   - `shell/alias.sh` — the `e` (magit) alias
+   - `shell/lib.sh` — `fdd`
    - `tools/bash/rg-delta`
    - `emacs-config/lib.el` — `dan/open-in-vscode`
 
@@ -48,7 +48,7 @@ switch today, so flipping back to Cursor is *not* yet a one-liner.
 ### To switch back to Cursor
 
 1. `ln -sfn ~/.local/bin/cursor bin/code`
-2. In `shell-config/env.sh`: `WORMHOLE_EDITOR=cursor`, `HYPERLINKED_SCHEME=cursor`;
+2. In `shell/env.sh`: `WORMHOLE_EDITOR=cursor`, `HYPERLINKED_SCHEME=cursor`;
    re-`source` and restart the wormhole server.
 3. Replace `vscode://` → `cursor://` in the four emitters under (3) above.
 4. In the three files under (4): `Cursor` / `/Applications/Cursor.app` /

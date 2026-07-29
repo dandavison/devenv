@@ -20,7 +20,7 @@ symlinks = [
     ("~/.config/wormhole", "dotfiles/wormhole"),
     ("~/.cursor/cli-config.json", "~/src/devenv/dotfiles/ai/cursor/cli-config.json"),
     ("~/.digrc", "dotfiles/dig/digrc"),
-    ("~/.emacs.d/init.el", "emacs-config/emacs.el"),
+    ("~/.emacs.d/init.el", "emacs/emacs.el"),
     ("~/.finicky.js", "dotfiles/finicky/finicky.js"),
     ("~/.gitconfig", "dotfiles/git/gitconfig"),
     ("~/.hammerspoon/init.lua", "dotfiles/hammerspoon/init.lua"),

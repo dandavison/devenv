@@ -1,3 +1,4 @@
 dotfiles/vscode/History/
 dotfiles/vscode/globalStorage/
 dotfiles/vscode/workspaceStorage/
+__pycache__/

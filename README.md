@@ -1,7 +1,14 @@
 # devenv
 
 Personal dev environment: dotfiles, shell config, and tools, wired together as
-git submodules under this superproject. `./setup` creates the symlinks.
+git submodules under this superproject.
+
+`scripts/symlinks.py` is the registry of every symlink pointing into this repo;
+`scripts/setup` creates them, and `scripts/find-symlinks` audits the registry
+against the filesystem (macOS has no reverse symlink index, so it walks the
+directories the registry already knows about) and reports links that are missing
+from the registry, entries that disagree with disk, and repo config nothing links
+to.
 
 ## Editor: VSCode vs Cursor
 
@@ -41,9 +48,11 @@ switch today, so flipping back to Cursor is *not* yet a one-liner.
    - `tools/bash/vscode-close-project` — AppleScript `process "Code"`
    - `tools/bash/vscode-summary` — osquery `%Code Helper%`, hs `name() == "Code"`
 
-5. **Settings/keybindings symlinks.** `setup` and `dotfiles/vscode/create-symlinks`
-   link `dotfiles/vscode/{settings,keybindings}.json` into the `Code` and
-   `Code - Insiders` support dirs only; the Cursor links were removed.
+5. **Settings/keybindings symlinks.** `scripts/symlinks.py` and
+   `dotfiles/vscode/create-symlinks` link
+   `dotfiles/vscode/{settings,keybindings}.json` into the `Code`,
+   `Code - Insiders` and `Cursor` support dirs. Harmless either way: each editor
+   ignores the others' directory.
 
 ### To switch back to Cursor
 
@@ -53,8 +62,7 @@ switch today, so flipping back to Cursor is *not* yet a one-liner.
 3. Replace `vscode://` → `cursor://` in the four emitters under (3) above.
 4. In the three files under (4): `Cursor` / `/Applications/Cursor.app` /
    `%cursor%` / `name() == "Cursor"`.
-5. Re-add the Cursor `User` dir to `dotfiles/vscode/create-symlinks` (and `setup`)
-   if you want shared settings/keybindings in Cursor.
+5. Nothing to do: the Cursor `User` links are already in place.
 6. Reload Hammerspoon; reinstall the wormhole extension into Cursor
    (`WORMHOLE_EDITOR=cursor make -C ~/src/wormhole/vscode-extension install`).
 

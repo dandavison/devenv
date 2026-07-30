@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+import os
+
+from symlinks import resolve, symlinks
+
+for source, target in symlinks:
+    source, target = resolve(source, target)
+    if source.exists() and not source.is_symlink():
+        print(f"WARNING: {source} exists but is not a symlink")
+    else:
+        source.parent.mkdir(parents=True, exist_ok=True)
+        assert target.exists(), target
+        # -n so that relinking an existing symlink-to-directory replaces it rather
+        # than creating a link inside it.
+        os.system(f'ln -sfn "{target}" "{source}"')
+        print(f"{source} -> {target}")

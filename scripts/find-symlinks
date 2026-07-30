@@ -1,0 +1,153 @@
+#!/usr/bin/env python3
+"""Audit reality against the symlink registry in symlinks.py.
+
+macOS keeps no reverse index of symlinks, so links pointing into this repo have
+to be found by walking. Rather than sweep all of $HOME, we use the registry as a
+prior: the directories that already hold links are where new ones show up, so we
+walk those (plus the usual system config spots) to a bounded depth. Reports links
+on disk that are missing from the registry (paste them into symlinks.py),
+registry entries that disagree with disk, and repo config nothing links to.
+"""
+
+import os
+import sys
+from pathlib import Path
+
+from symlinks import devenv, resolve, symlinks
+
+HOME = Path.home()
+DEPTH = 3
+EXTRA_ROOTS = [
+    Path("/etc"),
+    Path("/usr/local/bin"),
+    Path("/opt/homebrew/etc"),
+    Path("/Library/LaunchAgents"),
+    Path("/Library/LaunchDaemons"),
+]
+PRUNE = {
+    ".git",
+    ".cache",
+    ".cargo",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".rustup",
+    ".venv",
+    "Caches",
+    "__pycache__",
+    "node_modules",
+    "target",
+    "venv",
+}
+
+
+def main() -> None:
+    found = discover()
+    registry = {source: resolve(source, target) for source, target in symlinks}
+    registered = {str(source): target for source, target in registry.values()}
+
+    unregistered = {k: v for k, v in found.items() if k not in registered}
+    report(
+        "Links into the repo missing from the registry",
+        [
+            f"{tuple_for(link, target)}"
+            f"  # -> {target}{'' if target.exists() else ' (broken: stale link)'}"
+            for link, target in unregistered.items()
+        ],
+    )
+    report(
+        "Registry entries not matching disk",
+        [
+            f"{source} -> {target}: {disagreement(source, target)}"
+            for source, target in registry.values()
+            if disagreement(source, target)
+        ],
+    )
+    report(
+        "Repo config nothing links to",
+        [
+            str(path.relative_to(devenv))
+            for path in sorted((devenv / "dotfiles").iterdir())
+            if not path.name.startswith(".")
+            and not any(is_within(target, path) for target in registered.values())
+        ],
+    )
+    report(
+        "Directories that should be one link instead of many",
+        [f"{directory} -> {target}" for directory, target in collapsible(found).items()],
+    )
+
+
+def collapsible(found: dict[str, Path]) -> dict[Path, Path]:
+    """Dirs whose every entry is a link into a single repo dir: link the dir itself."""
+    collapsible = {}
+    for directory in {Path(link).parent for link in found}:
+        targets = {found.get(str(entry)) for entry in directory.iterdir()}
+        parents = {target.parent for target in targets if target}
+        if None not in targets and len(parents) == 1:
+            collapsible[directory] = parents.pop()
+    return collapsible
+
+
+def discover() -> dict[str, Path]:
+    found = {}
+    for root in roots():
+        for link in links_under(root, DEPTH):
+            target = Path(os.path.realpath(link))
+            if is_within(target, devenv):
+                found[str(link)] = target
+    return found
+
+
+def roots() -> list[Path]:
+    seeds = set(EXTRA_ROOTS)
+    for source, _ in symlinks:
+        seeds.update(ancestors(Path(source).expanduser()))
+    return sorted(seed for seed in seeds if seed.is_dir())
+
+
+def ancestors(path: Path) -> list[Path]:
+    return [parent for parent in path.parents if parent not in (Path("/"), HOME.parent)]
+
+
+def links_under(directory: Path, depth: int):
+    try:
+        entries = list(os.scandir(directory))
+    except OSError:
+        return
+    for entry in entries:
+        path = Path(entry.path)
+        if entry.is_symlink():
+            yield path
+        elif depth > 1 and entry.is_dir() and entry.name not in PRUNE:
+            if not is_within(path, devenv):
+                yield from links_under(path, depth - 1)
+
+
+def disagreement(source: Path, target: Path) -> str | None:
+    if not source.is_symlink():
+        return "exists, but is not a symlink" if source.exists() else "missing"
+    actual = Path(os.path.realpath(source))
+    if actual != Path(os.path.realpath(target)):
+        return f"points at {actual}"
+    if not target.exists():
+        return "target does not exist"
+    return None
+
+
+def tuple_for(link: str, target: Path) -> str:
+    source = link.replace(str(HOME), "~", 1) if link.startswith(str(HOME)) else link
+    return f'("{source}", "{target.relative_to(devenv)}"),'
+
+
+def is_within(path: Path, directory: Path) -> bool:
+    return path == directory or directory in path.parents
+
+
+def report(title: str, lines: list[str]) -> None:
+    print(f"\n{title}: {len(lines)}")
+    for line in sorted(lines):
+        print(f"  {line}")
+
+
+if __name__ == "__main__":
+    sys.exit(main())

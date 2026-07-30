@@ -9,6 +9,8 @@ symlinks = [
     ("/Applications/Wormhole.app", "~/src/wormhole/gui/dist/Wormhole/Wormhole.app"),
     ("~/.agents", "dotfiles/ai/agents"),
     ("~/.alacritty.toml", "dotfiles/alacritty/alacritty.toml"),
+    ("~/.claude/skills", "skills"),
+    ("~/.claude/settings.json", "dotfiles/ai/claude/claude-code-settings.json"),
     ("~/.codex/AGENTS.md", "temporal/dotfiles/AGENTS.md"),
     ("~/.codex/config.toml", "dotfiles/codex/config.toml"),
     ("~/.config/atuin", "dotfiles/atuin"),
@@ -28,7 +30,10 @@ symlinks = [
     ("~/.finicky.js", "dotfiles/finicky/finicky.js"),
     ("~/.gitconfig", "dotfiles/git/gitconfig"),
     ("~/.hammerspoon/init.lua", "dotfiles/hammerspoon/init.lua"),
-    ("~/.ipython/profile_default/ipython_config.py", "dotfiles/ipython/ipython_config.py"),
+    (
+        "~/.ipython/profile_default/ipython_config.py",
+        "dotfiles/ipython/ipython_config.py",
+    ),
     ("~/.lesskey", "dotfiles/less/lesskey"),
     ("~/.pdbrc.py", "dotfiles/pdb/pdbrc.py"),
     ("~/.shellcheckrc", "dotfiles/shellcheck/shellcheckrc"),
@@ -39,35 +44,35 @@ symlinks = [
     ("~/GEMINI.md", "temporal/dotfiles/AGENTS.md"),
     ("~/bin", "bin"),
     (
-        "~/Library/Application Support/Code/User/settings.json",
-        "dotfiles/vscode/settings.json",
-    ),
-    (
-        "~/Library/Application Support/Code/User/keybindings.json",
-        "dotfiles/vscode/keybindings.json",
-    ),
-    (
         "~/Library/Application Support/FluidVoice/parakeet_custom_vocabulary.json",
         "dotfiles/fluidvoice/parakeet_custom_vocabulary.json",
     ),
-    (
-        "~/Library/Application Support/Code - Insiders/User/settings.json",
-        "dotfiles/vscode/settings.json",
-    ),
-    (
-        "~/Library/Application Support/Code - Insiders/User/keybindings.json",
-        "dotfiles/vscode/keybindings.json",
-    ),
 ]
+
+for ed in ["Code", "Cursor"]:
+    symlinks.extend(
+        [
+            (
+                f"~/Library/Application Support/{ed}/User/settings.json",
+                "dotfiles/vscode/settings.json",
+            ),
+            (
+                f"~/Library/Application Support/{ed}/User/keybindings.json",
+                "dotfiles/vscode/keybindings.json",
+            ),
+        ]
+    )
+
 
 for source, target in symlinks:
     source = Path(source).expanduser()
-    if source.is_symlink():
-        print(f"{source} -> {os.readlink(source)}")
-    elif source.exists():
+    if source.exists() and not source.is_symlink():
         print(f"WARNING: {source} exists but is not a symlink")
     else:
         source.parent.mkdir(parents=True, exist_ok=True)
-        target = Path(target).expanduser() if target.startswith("~") else devenv / target
+        target = (
+            Path(target).expanduser() if target.startswith("~") else devenv / target
+        )
+        assert target.exists(), target
         os.system(f'ln -sf "{target}" "{source}"')
         print(f"created: {source} -> {target}")

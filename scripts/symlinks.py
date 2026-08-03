@@ -50,6 +50,7 @@ symlinks = [
     ("~/.neo/neo.toml", "dotfiles/neomorphus/neomorphus.toml"),
     ("~/.pdbrc.py", "dotfiles/pdb/pdbrc.py"),
     ("~/.pi/agent/models.json", "dotfiles/ai/pi/models.json"),
+    ("~/.pi/agent/settings.json", "dotfiles/ai/pi/settings.json"),
     ("~/.qwen/settings.json", "dotfiles/ai/qwen/settings.json"),
     ("~/.shellcheckrc", "dotfiles/shellcheck/shellcheckrc"),
     ("~/.tmux.conf", "dotfiles/tmux/tmux.conf"),

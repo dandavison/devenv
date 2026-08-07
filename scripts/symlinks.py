@@ -15,6 +15,7 @@ symlinks = [
     ("~/.alacritty.toml", "dotfiles/alacritty/alacritty.toml"),
     ("~/.claude/settings.json", "dotfiles/ai/claude/claude-code-settings.json"),
     ("~/.claude/skills", "skills"),
+    ("~/.claude/output-styles", "dotfiles/ai/claude/output-styles"),
     ("~/.codex/AGENTS.md", "temporal/dotfiles/AGENTS.md"),
     ("~/.codex/config.toml", "dotfiles/codex/config.toml"),
     ("~/.config/atuin", "dotfiles/atuin"),

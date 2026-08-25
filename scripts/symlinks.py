@@ -28,6 +28,7 @@ symlinks = [
     ("~/.config/micro/init.lua", "dotfiles/micro/init.lua"),
     ("~/.config/micro/plug", "dotfiles/micro/plug"),
     ("~/.config/micro/settings.json", "dotfiles/micro/settings.json"),
+    ("~/.config/ripgrep/config", "dotfiles/rg/config"),
     ("~/.config/uv/uv.toml", "dotfiles/uv/uv.toml"),
     ("~/.config/wormhole", "dotfiles/wormhole"),
     ("~/.cursor/.cursor.0/rules", "dotfiles/ai/cursor/rules"),
@@ -93,6 +94,8 @@ symlinks = [
     ("~/Library/Application Support/k9s/skin.yml", "dotfiles/k9s/skin.yml"),
     ("~/Library/Application Support/xbar/plugins", "dotfiles/xbar"),
     ("~/src/wormhole/.wormhole.toml", "dotfiles/wormhole/wormhole.toml"),
+    ("~/src/temporalio/api/.ignore", "dotfiles/rg/ignore/api"),
+    ("~/src/temporalio/temporal/.ignore", "dotfiles/rg/ignore/temporal"),
     ("~/src/temporalio/saas-cicd/.vscode", "dotfiles/vscode/workspaces/saas-cicd"),
 ]
 

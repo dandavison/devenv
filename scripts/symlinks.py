@@ -26,6 +26,7 @@ symlinks = [
     ("~/.codex-personal/AGENTS.md", "temporal/dotfiles/AGENTS.md"),
     ("~/.codex-personal/config.toml", "dotfiles/codex/config.toml"),
     ("~/.codex-personal/skills", "skills"),
+    ("~/.config/agent-from-issues.toml", "dotfiles/ai/agent-from-issues.toml"),
     ("~/.config/atuin", "dotfiles/atuin"),
     ("~/.config/gh/config.yml", "dotfiles/gh/config.yml"),
     ("~/.config/gitu", "dotfiles/gitu"),

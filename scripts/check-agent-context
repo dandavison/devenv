@@ -1,0 +1,70 @@
+#!/usr/bin/env -S uv run --script
+#
+# /// script
+# requires-python = ">=3.12"
+# dependencies = []
+# ///
+"""Check that claude, codex and pi load the general instructions everywhere and the
+Temporal instructions only in Temporal repos and their worktrees.
+
+Each instructions file ends by asking the agent to print a marker; this asks each agent
+which markers it was told to print.
+"""
+
+import subprocess
+import sys
+from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
+
+GENERAL, TEMPORAL = "📖", "🕰"
+PROMPT = (
+    "List every emoji your instructions tell you to output at the start of a "
+    "conversation. Reply with only those emoji, or NONE."
+)
+HOME = Path.home()
+CASES = [
+    (HOME / "src/temporalio/temporal", {GENERAL, TEMPORAL}),
+    (HOME / "worktrees/temporal/batch/temporal", {GENERAL, TEMPORAL}),
+    (HOME / "src/temporalio-etc/oncall", {GENERAL, TEMPORAL}),
+    (HOME / "src/delta", {GENERAL}),
+    (HOME / "src/agent-tools", {GENERAL}),
+]
+CLIS = {
+    "claude": ["claude", "--tools", "", "--model", "claude-haiku-4-5", "--print"],
+    "codex": ["codex", "exec", "--ephemeral", "--sandbox", "read-only"],
+    "pi": [
+        "pi",
+        "--model",
+        "mlx/mlx-community/Qwen3.6-35B-A3B-4bit",
+        "--print",
+        "--no-session",
+        "--no-tools",
+    ],
+}
+
+
+def main() -> None:
+    runs = [(cli, cwd, expected) for cli in CLIS for cwd, expected in CASES]
+    with ThreadPoolExecutor() as pool:
+        results = list(pool.map(lambda run: check(*run), runs))
+    sys.exit(0 if all(results) else 1)
+
+
+def check(cli: str, cwd: Path, expected: set[str]) -> bool:
+    result = subprocess.run(
+        [*CLIS[cli], PROMPT],
+        cwd=cwd,
+        stdin=subprocess.DEVNULL,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    output = result.stdout or result.stderr[-200:]
+    found = {marker for marker in (GENERAL, TEMPORAL) if marker in output}
+    ok = found == expected
+    print(f"{'ok  ' if ok else 'FAIL'} {cli:6} {cwd}: {' '.join(sorted(found)) or '-'}")
+    return ok
+
+
+if __name__ == "__main__":
+    main()

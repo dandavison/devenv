@@ -13,17 +13,19 @@ symlinks = [
     ("/Applications/Wormhole.app", "~/src/wormhole/gui/dist/Wormhole/Wormhole.app"),
     ("~/.agents", "dotfiles/ai/agents"),
     ("~/.alacritty.toml", "dotfiles/alacritty/alacritty.toml"),
+    ("~/.claude/CLAUDE.md", "dotfiles/ai/AGENTS.md"),
     ("~/.claude/settings.json", "dotfiles/ai/claude/claude-code-settings.json"),
     ("~/.claude/skills", "skills"),
     ("~/.claude/output-styles", "dotfiles/ai/claude/output-styles"),
+    ("~/.claude-personal/CLAUDE.md", "dotfiles/ai/AGENTS.md"),
     ("~/.claude-personal/settings.json", "dotfiles/ai/claude/claude-code-settings.json"),
     ("~/.claude-personal/skills", "skills"),
     ("~/.claude-personal/output-styles", "dotfiles/ai/claude/output-styles"),
     ("~/.claude-personal/commands", "dotfiles/ai/claude/commands"),
     ("~/.claude-personal/themes", "dotfiles/ai/claude/themes"),
-    ("~/.codex/AGENTS.md", "temporal/dotfiles/AGENTS.md"),
+    ("~/.codex/AGENTS.md", "dotfiles/ai/AGENTS.md"),
     ("~/.codex/config.toml", "dotfiles/codex/config.toml"),
-    ("~/.codex-personal/AGENTS.md", "temporal/dotfiles/AGENTS.md"),
+    ("~/.codex-personal/AGENTS.md", "dotfiles/ai/AGENTS.md"),
     ("~/.codex-personal/config.toml", "dotfiles/codex/config.toml"),
     ("~/.codex-personal/skills", "skills"),
     ("~/.config/agent-from-issues.toml", "dotfiles/ai/agent-from-issues.toml"),
@@ -60,15 +62,14 @@ symlinks = [
     ("~/.local/bin/docker-stop", "dotfiles/macos/docker-stop"),
     ("~/.neo/neo.toml", "dotfiles/neomorphus/neomorphus.toml"),
     ("~/.pdbrc.py", "dotfiles/pdb/pdbrc.py"),
+    ("~/.pi/agent/AGENTS.md", "dotfiles/ai/AGENTS.md"),
     ("~/.pi/agent/models.json", "~/src/agent-tools/config/pi/models.json"),
     ("~/.pi/agent/settings.json", "dotfiles/ai/pi/settings.json"),
     ("~/.qwen/settings.json", "~/src/agent-tools/config/qwen/settings.json"),
     ("~/.shellcheckrc", "dotfiles/shellcheck/shellcheckrc"),
     ("~/.tmux.conf", "dotfiles/tmux/tmux.conf"),
     ("~/.zshrc", "shell/init.zsh"),
-    ("~/AGENTS.md", "temporal/dotfiles/AGENTS.md"),
-    ("~/CLAUDE.md", "temporal/dotfiles/AGENTS.md"),
-    ("~/GEMINI.md", "temporal/dotfiles/AGENTS.md"),
+    ("~/GEMINI.md", "dotfiles/ai/AGENTS.md"),
     ("~/bin", "bin"),
     ("~/devenv", "~/src/devenv"),
     (
@@ -107,6 +108,10 @@ symlinks = [
     ("~/src/temporalio/temporal/.ignore", "dotfiles/rg/ignore/temporal"),
     ("~/src/temporalio/saas-cicd/.vscode", "dotfiles/vscode/workspaces/saas-cicd"),
 ]
+
+for temporal_dir in ["~/src/temporalio", "~/src/temporalio-etc"]:
+    for name in ["AGENTS.md", "CLAUDE.md", ".agents-root"]:
+        symlinks.append((f"{temporal_dir}/{name}", "temporal/dotfiles/AGENTS.md"))
 
 for editor in ["Code", "Code - Insiders", "Cursor"]:
     symlinks.extend(
